@@ -1,0 +1,82 @@
+
+\section{Problem 1}
+
+\begin{quoting}
+  The canvas site provides an excerpts from the published HEI Research
+  Report 148, \emph{Impact of Improved Air Quality During the 1996
+    Summer Olympic Games in Atlanta on Multiple Cardiovascular and
+    Respiratory Outcomes} by Peel et al.. The first four pages are
+  excerpts from an overall summary and critique of the report, which
+  provide general background. The next five pages are excerpts from
+  the more detailed research report. In both cases, the text appearing
+  in \textcolor{red}{red boxes} should be sufficient to answer the
+  following questions.
+\end{quoting}
+
+\begin{enumerate}[(a)]
+\item
+  \begin{quoting}
+    For both the analysis of ozone concentrations and the analysis of
+    ED visits, what are the potential outcomes defining the effects of
+    interest?
+  \end{quoting}
+  This study analyzes the impact of a short-term, temporary
+  intervention designed to reduce car traffic in Atlanta during the
+  1996 Summer Olympic Games on (i) daily ozone concentrations in the
+  city measured at a specific site, and (ii) the number of visits to
+  emergency departments related to cardiovascular and respiratory
+  cases for specified cohorts of interest aggregated across twelve
+  hospitals in the city.
+
+  Let $Y_i$ denote the ozone concentration in Atlanta on a single day
+  $i$, $Z_i$ denote the number of ED visits on day $i$, and
+  $W_i \in \{0, 1\}$ be an indicator for whether the intervention is
+  applied to day $i$.  Then the causal effects of interest compare the
+  two sets of potential outcomes:
+  \begin{align*}
+    (Y_i(W_i = 0), Y_i(W_i = 1))
+    \quad
+    \text{and}\quad (Z_i(W_i = 0), Z_i(W_i = 1)).
+  \end{align*}
+    That is, the causal effects concern the differences between ozone
+  concentration when the intervention is applied versus when it is not
+  applied, and likewise for ED visits.
+\item
+  \begin{quoting}
+    For both the analysis of ozone concentrations and the analysis of
+    ED visits, provide a possible violation of the ``No Multiple
+    Versions of Treatment'' (or ``consistency'') part of SUTVA.
+  \end{quoting}
+  There are several possible violations of the consistency portion of
+  the stable unit treatment value assumption (SUTVA), mainly stemming
+  from the city's adherence to the intervention.  For instance, one
+  provision of the intervention was to encourage businesses to provide
+  telecommuting work options and alternative work hours for employees,
+  and to advocate the use of vacation time.  However, the degree to
+  which businesses uphold these policies could vary throughout the
+  length of the Olympic Games.  There could be some days when many
+  businesses do not allow for telecommuting, for instance due to need
+  to produce quarterly results.  This would result in multiple
+  versions of the treatment, in that the extent of the treatment would
+  change.
+\item
+  \begin{quoting}
+    For both the analysis of ozone concentrations and the analysis of
+    ED visits, describe the assignment mechanism and provide one
+    reason why it may not be \emph{unconfounded}.
+  \end{quoting}
+  The choice of when to deploy the intervention was deterministically
+  chosen by the timing of the 1996 Olympics.  Any event which affects
+  the measured outcomes and takes place during the Olympics could
+  confound the treatment assignment.  For instance, there is likely an
+  increase in plane traffic arriving at the Atlanta airport carrying spectators and
+  athletes, and these planes could also increase the level of ozone in
+  the air.  Also, there are expected to be many more people in the
+  city for the Olympics compared to normal, and this would increase
+  the amount of car traffic.  
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:

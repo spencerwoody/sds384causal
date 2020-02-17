@@ -1,0 +1,78 @@
+
+\section{Problem 2}
+
+\begin{quoting}
+  Describe an example of an assignment mechanism that is ignorable but
+  not unconfounded and support your argument with statement(s) about
+  the assignment mechanism.
+\end{quoting}
+
+The ignorability assumption \citep{rubin1978} may be expressed as
+\begin{align}\label{eq:ignorable}
+  \W \ind \Y^{\mis} \mid \Y^{\obs}, \X
+\end{align}
+
+The assumption of unconfoundedness \citep{PS} can be expressed as:
+\begin{align}\label{eq:unconfounded}
+  \W \ind (\Y(0), \Y(1)) \mid \X.
+\end{align}
+
+% Probabilistic assignment (also called positivity):
+% \begin{align}\label{eq:postivity}
+%   0 < p_i(\X, \Y(0), \Y(1)) < 1
+% \end{align}
+
+
+We may create an assignment mechanism that is ignorable but not
+unconfounded using a sequential treatment assignment that conditions
+on observed outcomes.  For example, consider sampling treatment by
+taking draws of balls from an urn with replacement, and we put more
+balls in the urn depending on the outcome of $Y_i^\obs$.  To give a
+specific example, first define $N_s^{[0]} = N_d^{[0]} = 0$.  The
+outcome $Y$ is either 1, for survival, or 0, denoting death.  Let
+treatment assignments for units $i=1, \ldots, N$ be determined by
+iterating through the following steps:
+\begin{enumerate}[(i)]
+\item Calculate probability to treatment for unit $i$
+  \begin{align*}
+    p^{[i]} = \frac{1 + N_s^{[i-1]}}{2 + N_s^{[i-1]} + N_d^{[i-1]}}.
+\end{align*}
+\item Assign treatment via
+  \begin{align*}
+    W_i \sim \text{Bernoulli}(p^{[i]}) .
+  \end{align*}
+\item Observe $Y_i^\obs = Y_i(W_i) \in \{0, 1\}$
+\item If unit $i$ is assigned to treatment, then update the weights
+  for assignment to treatment and control depending on the outcome of
+  $Y_i(W_i = 1)$.  If unit $i$ is assigned treatment and dies, give
+  more weight to assignment to control for the next unit; if unit $i$
+  is assigned treatment and survives, give more weight to treatment
+  for the next unit.  Specifically, the weights are updated by
+  \begin{align*}
+    N_s^{[i]} =
+    \begin{cases}
+      N_s^{[i-1]} + 1 & \text{if } W_i = 1  \text{ and } Y_i = 1  \\
+      N_s^{[i-1]} & \text{otherwise} \\
+    \end{cases} \quad \text{and} \quad
+    N_d^{[i]} =
+    \begin{cases}
+      N_d^{[i-1]} + 1 & \text{if } W_i = 1  \text{ and } Y_i = 0 \\
+      N_d^{[i-1]} & \text{otherwise}. \\
+    \end{cases}
+  \end{align*}
+
+\item If $i < N$, return to step $(i)$. 
+
+    The treatment assignment vector $\mathbf{W}$ therefore depends on
+  the observed values in $\Y^\obs$, but it is still independent of the
+  missing outcomes $\Y^\mis$; therefore condition \eqref{eq:ignorable}
+  holds, but condition \eqref{eq:unconfounded} does not.
+
+
+\end{enumerate}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:

@@ -1,0 +1,139 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,letter]{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage[]{geometry}
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage[round]{natbib}
+% \usepackage[scaled]{helvet}
+%\usepackage{couriernew} % Required for the courier font
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{url}
+
+\usepackage[font=itshape]{quoting}
+
+% \usepackage{times}
+\usepackage{txfonts}
+% \usepackage{mathptmx}
+% \usepackage[scaled=0.9]{DejaVuSansMono}
+% \usepackage[]{inconsolata}
+\usepackage{enumerate} % Required for enumerating with letters
+
+\usepackage{setspace}
+
+% -------------------------------------------------------------------------
+% Homework name, etc.
+
+\newcommand{\W}{\mathbf{W}}
+\newcommand{\Y}{\mathbf{Y}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Z}{\mathbf{Z}}
+
+\newcommand{\mis}{\text{mis}}
+\newcommand{\obs}{\text{obs}}
+
+\newcommand{\dif}{\text{dif}}
+\newcommand{\rank}{\text{rank}}
+\newcommand{\gain}{\text{gain}}
+
+\newcommand{\OT}{O\textsubscript{3}}
+
+\newcommand{\hmwkTitle}{Homework~1\footnote{Code available at \url{github.com/spencerwoody/sds384causal}}} % Assignment title
+\newcommand{\hmwkDueDate}{February 18, 2020} % Due date
+
+
+\newcommand{\hmwkClass}{SDS 384: Causal Inference Methodology} % Course/class
+\newcommand{\hmwkClassTime}{} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{Professor Zigler} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Spencer Woody} % Your name
+
+\newcommand\ind{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+
+% -------------------------------------------------------------------------
+% Source in format
+
+\input{input/format}
+
+
+% -------------------------------------------------------------------------
+% Begin document
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+% -------------------------------------------------------------------------
+% Main body
+
+\emph{\noindent Work with Preston Biro, Jingjing Fan, and Qiahui Lin. \\My }
+
+\input{input/problem1}
+
+% \pagebreak
+
+\input{input/problem2}
+
+% \pagebreak
+
+\input{input/problem3}
+
+% \pagebreak
+
+% \input{input/problem2}
+
+% \pagebreak
+
+% \input{input/problem3}
+
+
+
+
+% -------------------------------------------------------------------------
+% References
+
+% \bibliographystyle{plainnat}
+\pagebreak
+
+
+
+
+% -------------------------------------------------------------------------
+% List code
+
+% \pagebreak
+% % \rscript{homework03.r}{Sample Perl R With Highlighting}
+% \lstinputlisting[language=R,
+% basicstyle=\footnotesize\ttfamily]{problem03.R}
+ 
+% -------------------------------------------------------------------------
+% References
+
+\nocite{peel2010impact}
+
+\bibliographystyle{plainnat}
+
+\begin{raggedright}
+\bibliography{main}
+\end{raggedright}
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
