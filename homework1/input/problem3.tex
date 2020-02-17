@@ -190,18 +190,18 @@
   via
   \begin{align*}
     (Y_i^\mis = Y_i(0) \mid Y_i^\obs = Y_i(1), \ldots)
-    \sim \mathcal{N}(\mu_c', \nu_c') \\
-      \mu_c' = \mu_c + \rho \sigma_c \sigma_t  / \sigma_t^2 \cdot
-               (Y_i^\obs - \mu_t), \quad
-    \nu_c'  = (1 - \rho^2) \sigma^2_c
+    &\sim \mathcal{N}(\mu_c', \nu_c') \\
+      \mu_c' &= \mu_c + \rho \sigma_c \sigma_t  / \sigma_t^2 \cdot
+               (Y_i^\obs - \mu_t) \\
+    \nu_c'  &= (1 - \rho^2) \sigma^2_c
   \end{align*}
 and for $W_i = 0$, 
 \begin{align*}
   (Y_i^\mis = Y_i(1) \mid Y_i^\obs = Y_i(0), \ldots)
-  \sim \mathcal{N}(\mu_t', \nu_t') \\
-  \mu_t' = \mu_t + \rho \sigma_c \sigma_t  / \sigma_c^2 \cdot
-           (Y_i^\obs - \mu_c), \quad
-  \nu_t' = (1 - \rho^2) \sigma^2_t
+  &\sim \mathcal{N}(\mu_t', \nu_t') \\
+  \mu_t' &= \mu_t + \rho \sigma_c \sigma_t  / \sigma_c^2 \cdot
+           (Y_i^\obs - \mu_c) \\
+  \nu_t' &= (1 - \rho^2) \sigma^2_t. 
 \end{align*}
   This sampling scheme can be easily vectorized by
   \begin{align*}
