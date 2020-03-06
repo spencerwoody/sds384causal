@@ -4,14 +4,15 @@
 \begin{quoting}
   In this exercise you will use a variety of propensity score methods
   to estimate the causal effect of having an SnCR in a given year on
-  NOx emissions in that year, under the assumption that the covariates
-  listed in Table 1 are sufficient to adjust for confounding (i.e.,
-  that having an SnCR installed is conditionally unconfounded with
-  respect to NOx emissions). For all parts of this exercise:
+  $\text{NO}_x$ emissions in that year, under the assumption that the
+  covariates listed in Table~\ref{tab:data-description} are sufficient
+  to adjust for confounding (i.e., that having an SnCR installed is
+  conditionally unconfounded with respect to $\text{NO}_x$
+  emissions). For all parts of this exercise:
   \begin{itemize}
-  \item Use logistic regression with all of the variables in Table 1
-    (besides Tx and Outcome) included as covariates to estimate the
-    propensity score.
+  \item Use logistic regression with all of the variables in
+    Table~\ref{tab:data-description} (besides Tx and Outcome) included
+    as covariates to estimate the propensity score.
   \item Be sure to check covariate balance for each analysis
   \item Conduct each analysis separately for 2002 and 2014, and
     comment (in $\sim$3 sentences) on the differences between the analyses

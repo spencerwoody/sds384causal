@@ -1,4 +1,41 @@
 
+\begin{table}[h!]
+\begin{tabular}{@{}l|l@{}}
+  \toprule
+  Variable name      & Description                                                                                                                                   \\ \midrule
+  \texttt{Tx}                 & Whether the EGU has an SnCR installed in that year                                                                                            \\
+  \texttt{Outcome}            & Annual emissions of NO$_x$ in tons                                                                                                               \\
+  \texttt{totOpTime}          & Number of hours operated during the year                                                                                                      \\
+  \texttt{HeatInput}          & Measure of the amount of fuel burned                                                                                                          \\
+  \texttt{pctCapacity}        & Average percent of total operating capacity actually operated                                                                                 \\
+  \texttt{Phase2}             & Indicator of participation on Phase II of the Acid Rain Program                                                                               \\
+  \texttt{avgNOxControls}     & Average number of other NOx emissions controls (besides SnCR)                                                                                 \\
+  \texttt{coal\_no\_scrubber}   & \begin{tabular}[c]{@{}l@{}}Indicator of whether the EGU burns coal as primary fuel and does not have\\ an SO2 scrubber installed\end{tabular} \\
+  \texttt{coal\_with\_scrubber} & \begin{tabular}[c]{@{}l@{}}Indicator of whether the EGU burns coal as primary fuel and has an SO2\\ scrubber installed\end{tabular}           \\
+  \texttt{EPA.Region}         & Which of 9 EPA defined regions in which the EGU is located                                                                                    \\ \bottomrule
+\end{tabular}
+\caption{\label{tab:data-description} Description of relevant
+  variables in the \texttt{annualEGUs.csv} data.}
+\end{table}
+
+\begin{quoting}
+  This assignment centers around a data set very similar to the one
+  used in the DAPSm paper by \cite{papadogeorgou2018adjusting}. The
+  data contain information on power plants operating in the United
+  States in 2002 and 2014, and are available on the Canvas site in the
+  file annualEGUs.csv. Specifically, the units in the data are
+  Electricity Generating Units (EGUs) in 2002 and 2014, some of which
+  were treated with a particular technology to reduce their emissions
+  of $\text{NO}_x$, an important precursor to harmful air
+  pollution. The technology is a Selective Catalytic Reduction or
+  Selective Non Catalytic Reduction System, (SnCR). The outcome of
+  interest is the level of $\text{NO}_x$ emissions. Several other
+  characteristics are measured on each power plant. Table 1 lists the
+  variables that you will use for this analysis (you can ignore any
+  other variables you see in the data). For all analyses of these
+  data, log transform the \texttt{Outcome} variable.
+\end{quoting}
+
 \section{Exercise 1}
 
 \begin{quoting}
