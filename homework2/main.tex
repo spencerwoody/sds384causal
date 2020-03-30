@@ -1,6 +1,6 @@
-%----------------------------------------------------------------------------------------
+% -------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
+% -------------------------------------------------------------------------
 
 \documentclass[11pt,letter]{article}
 
@@ -17,20 +17,25 @@
 \usepackage{booktabs}
 \usepackage{amsmath}
 \usepackage{url}
+\usepackage{xcolor}
 
 \usepackage[font=itshape]{quoting}
 
+% \usepackage{mathpazo}
 % \usepackage{times}
 \usepackage{txfonts}
 % \usepackage{mathptmx}
 % \usepackage[scaled=0.9]{DejaVuSansMono}
 % \usepackage[]{inconsolata}
+
 \usepackage{enumerate} % Required for enumerating with letters
 
 \usepackage{setspace}
 
 % -------------------------------------------------------------------------
 % Homework name, etc.
+
+\newcommand{\sw}[1]{\textcolor{blue}{#1}}
 
 \newcommand{\W}{\mathbf{W}}
 \newcommand{\Y}{\mathbf{Y}}
@@ -47,7 +52,7 @@
 \newcommand{\OT}{O\textsubscript{3}}
 
 \newcommand{\hmwkTitle}{Homework~2} % Assignment title
-\newcommand{\hmwkDueDate}{February 18, 2020} % Due date
+\newcommand{\hmwkDueDate}{March 24, 2020} % Due date
 
 
 \newcommand{\hmwkClass}{SDS 384: Causal Inference Methodology} % Course/class
@@ -77,9 +82,9 @@
 % -------------------------------------------------------------------------
 % Main body
 
-\emph{Work with\ldots}
+\emph{Work with Qiaohui Lin}
 
-\emph{My own code is available at
+\emph{My code is available at
   \texttt{github.com/spencerwoody/sds384causal}}
 
 
@@ -98,7 +103,7 @@
 
 \input{input/problem4}
 
-
+\input{input/additional}
 
 
 % -------------------------------------------------------------------------
@@ -129,7 +134,8 @@
 \end{raggedright}
 
 
-%----------------------------------------------------------------------------------------
+% -------------------------------------------------------------------------
+
 
 \end{document}
 

@@ -1,0 +1,352 @@
+\message{ !name(../main.tex)}% -------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+% -------------------------------------------------------------------------
+
+\documentclass[11pt,letter]{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage[]{geometry}
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage[round]{natbib}
+% \usepackage[scaled]{helvet}
+%\usepackage{couriernew} % Required for the courier font
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{xcolor}
+
+\usepackage[font=itshape]{quoting}
+
+% \usepackage{mathpazo}
+% \usepackage{times}
+\usepackage{txfonts}
+% \usepackage{mathptmx}
+% \usepackage[scaled=0.9]{DejaVuSansMono}
+% \usepackage[]{inconsolata}
+
+\usepackage{enumerate} % Required for enumerating with letters
+
+\usepackage{setspace}
+
+% -------------------------------------------------------------------------
+% Homework name, etc.
+
+\newcommand{\sw}[1]{\textcolor{blue}{#1}}
+
+\newcommand{\W}{\mathbf{W}}
+\newcommand{\Y}{\mathbf{Y}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Z}{\mathbf{Z}}
+
+\newcommand{\mis}{\text{mis}}
+\newcommand{\obs}{\text{obs}}
+
+\newcommand{\dif}{\text{dif}}
+\newcommand{\rank}{\text{rank}}
+\newcommand{\gain}{\text{gain}}
+
+\newcommand{\OT}{O\textsubscript{3}}
+
+\newcommand{\hmwkTitle}{Homework~2} % Assignment title
+\newcommand{\hmwkDueDate}{March 24, 2020} % Due date
+
+
+\newcommand{\hmwkClass}{SDS 384: Causal Inference Methodology} % Course/class
+\newcommand{\hmwkClassTime}{} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{Professor Zigler} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{Spencer Woody} % Your name
+
+\newcommand\ind{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+
+% -------------------------------------------------------------------------
+% Source in format
+
+\input{input/format}
+
+
+% -------------------------------------------------------------------------
+% Begin document
+
+\begin{document}
+
+\message{ !name(input/problem2.tex) !offset(-77) }
+\section{Exercise 2}
+
+\begin{quoting}
+  In this exercise you will use a variety of propensity score methods
+  to estimate the causal effect of having an SnCR in a given year on
+  $\text{NO}_x$ emissions in that year, under the assumption that the
+  covariates listed in Table~\ref{tab:data-description} are sufficient
+  to adjust for confounding (i.e., that having an SnCR installed is
+  conditionally unconfounded with respect to $\text{NO}_x$
+  emissions). For all parts of this exercise:
+  \begin{itemize}
+  \item Use logistic regression with all of the variables in
+    Table~\ref{tab:data-description} (besides Tx and Outcome) included
+    as covariates to estimate the propensity score.
+  \item Be sure to check covariate balance for each analysis
+  \item Conduct each analysis separately for 2002 and 2014, and
+    comment (in $\sim$3 sentences) on the differences between the analyses
+    in the two years. 
+  \item I strongly suggest you read up on the following \textsf{R}
+    packages to conduct these analyses: \texttt{MatchIt},
+    \texttt{survey}, \texttt{ipw}, and \texttt{twang}.
+  \end{itemize}
+\end{quoting}
+
+\begin{enumerate}[(a)]
+\item
+  % -------------------------------------------------------------------------
+  % A
+  % -------------------------------------------------------------------------
+  \begin{quoting}
+    When you arrive at a propensity score model, plot the histograms
+    of the estimated propensity scores in treated and untreated units.
+  \end{quoting}
+  % -------------------------------------------------------------------------
+  See Figure~\ref{fig:propensity-logistic}. 
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/prop-count-logistic.pdf}
+    \caption{\label{fig:propensity-logistic} Propensity scores for
+      treated and untreated units for both years in the study.  These
+      are estimated from logistic regression of $Z$ (\texttt{Tx}) on
+      all the other covariates in Table~\ref{tab:data-description}
+      (aside from \texttt{Outcome}).  % We show two histograms with
+      % distinct $y$-axes, one using counts (\emph{left}), and one using
+      % density (\emph{right}) to account for imbalance between the
+      % quantity of observations with $Z_i=0$ and $Z_i=1$ in the
+      % dataset.
+      % \sw{Add a rug of discarded $Z=1$ units when using a
+      % caliper, and indicators of subclassification\ldots}
+    }
+  \end{figure}
+\item
+  % -------------------------------------------------------------------------
+  % B
+  % -------------------------------------------------------------------------
+  \begin{quoting}
+    Conduct a 1-1 nearest neighbor propensity score matching procedure
+    without replacement
+  \end{quoting}
+  % -------------------------------------------------------------------------
+
+  \begin{itemize}
+  \item 2002: -1.1098 (SE = 0.0832, $p < 0.0001$) using 226 matched
+    pairs
+  \item 2014: -0.7262 (SE = 0.0443, $p < 0.0001$) using 921 matched
+    pairs
+  \end{itemize}
+
+  Tables~\ref{tab-bal2b-02} and \ref{tab-bal2b-14} below provide the
+  balance assessment.
+
+  Tables~\ref{tab:lm-2b-02} and \ref{tab:lm-2b-14} provide the full
+  results of the linear model.
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{lllrr}
+      \toprule
+      variable & variable.type & significance.test & test.statistic & p.value \\ 
+      \midrule
+      totOpTime & continuous & t-test, difference in means & -2.005 & 0.0456 \\ 
+      HeatInput & continuous & t-test, difference in means & -1.307 & 0.1919 \\ 
+      pctCapacity & continuous & t-test, difference in means & -1.679 & 0.0939 \\ 
+      Phase2 & binary & z-test, difference in proportion & 0.053 & 0.8174 \\ 
+      avgNOxControls & continuous & t-test, difference in means & -0.581 & 0.5617 \\ 
+      coal\_no\_scrubber & binary & z-test, difference in proportion & 0.616 & 0.4326 \\ 
+      coal\_with\_scrubber & binary & z-test, difference in proportion & 0.554 & 0.4566 \\ 
+      EPA.Region & categorical & chi-sq test of independence & 5.318 & 0.8057 \\ 
+      \bottomrule
+    \end{tabular}
+    \caption{Covariate balance check for one-to-one propensity score matching (Problem 2(b)), year 2002} 
+    \label{tab-bal2b-02}
+  \end{table}
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{lllrr}
+      \toprule
+      variable & variable.type & significance.test & test.statistic & p.value \\ 
+      \midrule
+      totOpTime & continuous & t-test, difference in means & 6.691 & $<$ 0.0001 \\ 
+      HeatInput & continuous & t-test, difference in means & 5.768 & $<$ 0.0001 \\ 
+      pctCapacity & continuous & t-test, difference in means & 8.138 & $<$ 0.0001 \\ 
+      Phase2 & binary & z-test, difference in proportion & 32.167 & $<$ 0.0001 \\ 
+      avgNOxControls & continuous & t-test, difference in means & -4.288 & $<$ 0.0001 \\ 
+      coal\_no\_scrubber & binary & z-test, difference in proportion & 34.534 & $<$ 0.0001 \\ 
+      coal\_with\_scrubber & binary & z-test, difference in proportion & 1.932 & 0.1645 \\ 
+      EPA.Region & categorical & chi-sq test of independence & 150.241 & $<$ 0.0001 \\ 
+      \bottomrule
+    \end{tabular}
+    \caption{Covariate balance check for one-to-one propensity score matching (Problem 2(b)), year 2014} 
+    \label{tab-bal2b-14}
+  \end{table}
+
+\item
+  % -------------------------------------------------------------------------
+  % C
+  % -------------------------------------------------------------------------
+  \begin{quoting}
+    Conduct a 1-1 nearest neighbor propensity score matching procedure
+    without replacement and a caliper set to 0.1 standard deviations
+    of the estimated propensity score distribution.
+  \end{quoting}
+  % -------------------------------------------------------------------------
+
+  \begin{itemize}
+  \item 2002: -0.9699 (SE = $0.0944$, $p < 0.0001$) using 166 matched
+    pairs (60 unmatched treatment units)
+  \item 2014: -0.7576 (SE $= 0.0554$, $p < 0.0001$) using 496 matched
+    pairs (425 unmatched treatment units)
+  \end{itemize}
+
+  Tables~\ref{tab-bal2c-02} and \ref{tab-bal2c-14}. 
+
+  Tables~\ref{tab:lm-2c-02} and \ref{tab:lm-2c-14} provide the full
+  results of the linear model.
+
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{lllrr}
+      \toprule
+      variable & variable.type & significance.test & test.statistic & p.value \\ 
+      \midrule
+      totOpTime & continuous & t-test, difference in means & -0.119 & 0.9054 \\ 
+      HeatInput & continuous & t-test, difference in means & 0.253 & 0.8007 \\ 
+      pctCapacity & continuous & t-test, difference in means & -0.039 & 0.9692 \\ 
+      Phase2 & binary & z-test, difference in proportion & 0.016 & 0.8979 \\ 
+      avgNOxControls & continuous & t-test, difference in means & 0.616 & 0.5382 \\ 
+      coal\_no\_scrubber & binary & z-test, difference in proportion & 0.000 & 1.0000 \\ 
+      coal\_with\_scrubber & binary & z-test, difference in proportion & 0.161 & 0.6880 \\ 
+      EPA.Region & categorical & chi-sq test of independence & 5.633 & 0.7760 \\ 
+      \bottomrule
+    \end{tabular}
+    \caption{Covariate balance check for one-to-one propensity score matching with a caliber (Problem 2(c)), year 2002} 
+    \label{tab-bal2c-02}
+  \end{table}
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{lllrr}
+      \toprule
+      variable & variable.type & significance.test & test.statistic & p.value \\ 
+      \midrule
+      totOpTime & continuous & t-test, difference in means & 6.691 & $<$ 0.0001 \\ 
+      HeatInput & continuous & t-test, difference in means & 5.768 & $<$ 0.0001 \\ 
+      pctCapacity & continuous & t-test, difference in means & 8.138 & $<$ 0.0001 \\ 
+      Phase2 & binary & z-test, difference in proportion & 32.167 & $<$ 0.0001 \\ 
+      avgNOxControls & continuous & t-test, difference in means & -4.288 & $<$ 0.0001 \\ 
+      coal\_no\_scrubber & binary & z-test, difference in proportion & 34.534 & $<$ 0.0001 \\ 
+      coal\_with\_scrubber & binary & z-test, difference in proportion & 1.932 & 0.1645 \\ 
+      EPA.Region & categorical & chi-sq test of independence & 150.241 & $<$ 0.0001 \\ 
+      \bottomrule
+    \end{tabular}
+    \caption{Covariate balance check for one-to-one propensity score matching with a caliber (Problem 2(c)), year 2014} 
+    \label{tab-bal2c-14}
+  \end{table}
+
+
+\item
+  % -------------------------------------------------------------------------
+  % D
+  % -------------------------------------------------------------------------
+  \begin{quoting}
+    Conduct an analysis that subclassifies units based on the
+    estimated propensity score
+  \end{quoting}
+  % -------------------------------------------------------------------------
+
+  \begin{itemize}
+  \item 2002: -0.6381 (SE = 0.1285)
+  \item 2014: -0.7314 (SE = 0.0890)
+  \end{itemize}
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{lrrrr}
+      \toprule
+      variable             & subgroup1 & subgroup2 & subgroup3  & subgroup4 \\ 
+      \midrule
+      totOpTime            & 0.5071    & 0.1241    & $<$ 0.0001 & 0.3076    \\ 
+      HeatInput            & 0.4012    & 0.6007    & 0.0029     & 0.1101    \\ 
+      pctCapacity          & 0.9979    & 0.3034    & 0.0012     & 0.3677    \\ 
+      Phase2               & 1.0000    & 1.0000    & 0.5589     & 0.2496    \\ 
+      avgNOxControls       & 0.0337    & 0.0361    & 0.2993     & 0.9215    \\ 
+      coal\_no\_scrubber   & 0.0194    & 1.0000    & 0.8819     & 1.0000    \\ 
+      coal\_with\_scrubber & 0.5845    & 0.8112    & 0.1682     & 1.0000        \\ 
+      EPA.Region           & 0.0002    & 0.0104    & 0.2480     & 0.0530    \\ 
+      \bottomrule
+    \end{tabular}
+    \caption{Covariate balance check for subclassification using propensity score (4 subclasses), year 2002} 
+    \label{tab-bal2d-02}
+  \end{table}
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{lrrrr}
+      \toprule
+      variable & subgroup1 & subgroup2 & subgroup3 & subgroup4 \\ 
+      \midrule
+      totOpTime & $<$ 0.0001 & 0.0013 & 0.0017 & 0.0329 \\ 
+      HeatInput & $<$ 0.0001 & 0.2439 & 0.7289 & 0.0812 \\ 
+      pctCapacity & $<$ 0.0001 & 0.0004 & 0.0059 & 0.1802 \\ 
+      Phase2 & 0.4905 & 0.2273 & 0.8723 & 1.0000 \\ 
+      avgNOxControls & 0.9718 & 0.6884 & 0.0005 & $<$ 0.0001 \\ 
+      coal\_no\_scrubber & 0.7270 & 0.1304 & 0.5050 & 0.4342 \\ 
+      coal\_with\_scrubber & $<$ 0.0001 & 0.6324 & 0.9029 & $<$ 0.0001 \\ 
+      EPA.Region & 0.0006 & $<$ 0.0001 & 0.0036 & 0.0983 \\ 
+      \bottomrule
+    \end{tabular}
+    \caption{Covariate balance check for subclassification using propensity score (4 subclasses), year 2014} 
+    \label{tab-bal2d-14}
+  \end{table}
+
+\item
+  % -------------------------------------------------------------------------
+  % E
+  % -------------------------------------------------------------------------
+  \begin{quoting}
+    Conduct an IPW analysis using weights
+    $\frac{W_i}{\hat e(X_i)} + \frac{1 - W_i}{1 - \hat e(X_i)}$ and be
+    sure to include a visual summary (e.g., histogram) of the
+    estimated weights.
+  \end{quoting}
+  % -------------------------------------------------------------------------
+
+  
+
+\item
+  % -------------------------------------------------------------------------
+  % F
+  % -------------------------------------------------------------------------
+  \begin{quoting}
+    Conduct an IPW analysis using stabilized weights and be sure to
+    include a visual summary (e.g., histogram) of the estimated
+    weights.
+  \end{quoting}
+  % -------------------------------------------------------------------------
+  
+\end{enumerate}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
+
+\message{ !name(../main.tex) !offset(-207) }
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

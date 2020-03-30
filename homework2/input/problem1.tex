@@ -23,28 +23,105 @@
   used in the DAPSm paper by \cite{papadogeorgou2018adjusting}. The
   data contain information on power plants operating in the United
   States in 2002 and 2014, and are available on the Canvas site in the
-  file annualEGUs.csv. Specifically, the units in the data are
-  Electricity Generating Units (EGUs) in 2002 and 2014, some of which
-  were treated with a particular technology to reduce their emissions
-  of $\text{NO}_x$, an important precursor to harmful air
+  file \texttt{annualEGUs.csv}. Specifically, the units in the data
+  are Electricity Generating Units (EGUs) in 2002 and 2014, some of
+  which were treated with a particular technology to reduce their
+  emissions of $\text{NO}_x$, an important precursor to harmful air
   pollution. The technology is a Selective Catalytic Reduction or
   Selective Non Catalytic Reduction System, (SnCR). The outcome of
   interest is the level of $\text{NO}_x$ emissions. Several other
-  characteristics are measured on each power plant. Table 1 lists the
-  variables that you will use for this analysis (you can ignore any
-  other variables you see in the data). For all analyses of these
-  data, log transform the \texttt{Outcome} variable.
+  characteristics are measured on each power
+  plant. Table~\ref{tab:data-description} lists the variables that you
+  will use for this analysis (you can ignore any other variables you
+  see in the data). For all analyses of these data, log transform the
+  \texttt{Outcome} variable.
 \end{quoting}
 
 \section{Exercise 1}
 
 \begin{quoting}
-  Separately for 2002 and 2014, conduct an unadjusted “crude” analysis
+  Separately for 2002 and 2014, conduct an unadjusted ``crude'' analysis
   comparing the average NOx levels for treated and untreated
   units. Evaluate whether the observed covariates are balanced in this
   unadjusted analysis.
 \end{quoting}
 
+Here are throughout this assignment, we assume a linear model of the
+form
+\begin{align}
+  \label{eq:lin-mod}
+  \log y_i = \beta_0 + \alpha z_i + x_i^\intercal \beta + \varepsilon_i,
+  \quad \varepsilon_i \sim \mathcal{N}(0, \sigma^2)
+\end{align}
+where $y_i$ is the annual emissions of NO$_x$ for the $i$th power
+plant, $z_i$ is the treatment indicator, and $x_i$ is a vector of the
+other covariates listed in Table~\ref{tab:data-description}.  The
+parameter $\alpha$ is the treatment effect.
+
+In the crude analysis we use the entire dataset for years 2002 and
+2014, respectively, to estimate the parameters in
+Eq.~\eqref{eq:lin-mod}.  Full regression estimates from this crude
+analysis are given in Tables~\ref{tab:crude-lm-02} and
+\ref{tab:crude-lm-14} at the end of the document.  The treatment
+effect estimates from both years are:
+\begin{itemize}
+\item 2002: -0.9525 (SE = $0.0669$, $p < 0.0001$)
+\item 2014: -0.7069 (SE = $0.0450$, $p < 0.0001$)
+\end{itemize}
+Here are throughout, we use the ordinary least squares estimate of the
+standard error, which is the outcome of the \texttt{lm} command in R.
+
+Tables \ref{tab-bal1-02} and \ref{tab-bal1-14} present summaries of
+covariate balance between the treatment and control groups, using
+various (unpaired) tests of null hypothesis of no difference in mean
+of the covariate between the groups.  We use the t-test, z-test, or
+chi-squared test depending on the data type.  There is significant
+imbalance present in the dataset from both years.  A large portion of
+the tests return very small p-values, a manifestation of significant
+differences in the distribution of covariates between treated and
+control units. This problem is especially bad for year 2014. 
+
+
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lllrr}
+  \toprule
+variable & variable.type & significance.test & test.statistic & p.value \\ 
+  \midrule
+totOpTime & continuous & t-test, difference in means & -4.009 & $<$ 0.0001 \\ 
+  HeatInput & continuous & t-test, difference in means & -5.377 & $<$ 0.0001 \\ 
+  pctCapacity & continuous & t-test, difference in means & -1.746 & 0.0818 \\ 
+  Phase2 & binary & z-test, difference in proportion & 0.087 & 0.7684 \\ 
+  avgNOxControls & continuous & t-test, difference in means & -6.589 & $<$ 0.0001 \\ 
+  coal\_no\_scrubber & binary & z-test, difference in proportion & 84.663 & $<$ 0.0001 \\ 
+  coal\_with\_scrubber & binary & z-test, difference in proportion & 7.951 & 0.0048 \\ 
+  EPA.Region & categorical & chi-sq test of independence & 283.146 & $<$ 0.0001 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Covariate balance check for crude analysis, year 2002}
+\label{tab-bal1-02}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lllrr}
+  \toprule
+variable & variable.type & significance.test & test.statistic & p.value \\ 
+  \midrule
+totOpTime & continuous & t-test, difference in means & 7.887 & $<$ 0.0001 \\ 
+  HeatInput & continuous & t-test, difference in means & 7.066 & $<$ 0.0001 \\ 
+  pctCapacity & continuous & t-test, difference in means & 9.653 & $<$ 0.0001 \\ 
+  Phase2 & binary & z-test, difference in proportion & 72.950 & $<$ 0.0001 \\ 
+  avgNOxControls & continuous & t-test, difference in means & -5.046 & $<$ 0.0001 \\ 
+  coal\_no\_scrubber & binary & z-test, difference in proportion & 53.994 & $<$ 0.0001 \\ 
+  coal\_with\_scrubber & binary & z-test, difference in proportion & 3.564 & 0.0591 \\ 
+  EPA.Region & categorical & chi-sq test of independence & 189.448 & $<$ 0.0001 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Covariate balance check for crude analysis, year 2014} 
+\label{tab-bal1-14}
+\end{table}
 
 %%% Local Variables:
 %%% mode: latex

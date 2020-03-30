@@ -16,11 +16,10 @@
   \item Be sure to check covariate balance for each analysis
   \item Conduct each analysis separately for 2002 and 2014, and
     comment (in $\sim$3 sentences) on the differences between the analyses
-    in the two years Be sure to check covariate balance for each
-    analysis
-  \item I strongly suggest you read up on the following R packages to
-    conduct these analyses: \texttt{MatchIt}, \texttt{survey},
-    \texttt{ipw}, \texttt{twang}
+    in the two years. 
+  \item I strongly suggest you read up on the following \textsf{R}
+    packages to conduct these analyses: \texttt{MatchIt},
+    \texttt{survey}, \texttt{ipw}, and \texttt{twang}.
   \end{itemize}
 \end{quoting}
 
@@ -34,7 +33,25 @@
     of the estimated propensity scores in treated and untreated units.
   \end{quoting}
   % -------------------------------------------------------------------------
-
+  Figure~\ref{fig:propensity-logistic} shows histograms for the
+  propensity score estimated using logistic regression, faceted by
+  year and treatment / control groups.  
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/prop-count-logistic.pdf}
+    \caption{\label{fig:propensity-logistic} Propensity scores for
+      treated and untreated units for both years in the study.  These
+      are estimated from logistic regression of $Z$ (\texttt{Tx}) on
+      all the other covariates in Table~\ref{tab:data-description}
+      (aside from \texttt{Outcome}).  % We show two histograms with
+      % distinct $y$-axes, one using counts (\emph{left}), and one using
+      % density (\emph{right}) to account for imbalance between the
+      % quantity of observations with $Z_i=0$ and $Z_i=1$ in the
+      % dataset.
+      % \sw{Add a rug of discarded $Z=1$ units when using a
+      % caliper, and indicators of subclassification\ldots}
+    }
+  \end{figure}
 \item
   % -------------------------------------------------------------------------
   % B
@@ -44,6 +61,72 @@
     without replacement
   \end{quoting}
   % -------------------------------------------------------------------------
+  As in Problem 1, and throughout the rest of this problem, we use the
+  linear model in Eq.~\eqref{eq:lin-mod} to estimate the treatment
+  effect.  We use matching without replacement, matching each treated
+  unit to a control unit.  Then these matched pairs are used to
+  estimate the parameters of the linear model.  Thus we estimate the
+  average treatment effect on the treated (ATT), 
+  \begin{itemize}
+  \item 2002: -1.1098 (SE = 0.0832, $p < 0.0001$) using 226 matched
+    pairs
+  \item 2014: -0.7262 (SE = 0.0443, $p < 0.0001$) using 921 matched
+    pairs
+  \end{itemize}
+  Tables~\ref{tab:lm-2b-02} and \ref{tab:lm-2b-14} provide the full
+  results of the linear model.
+
+  Tables~\ref{tab-bal2b-02} and \ref{tab-bal2b-14} below provide the
+  balance assessment.  For year 2002, there is a remarkable gain in
+  covariate balance from matching.  Whereas many covariates appeared
+  imbalanced in the crude analysis of Problem 1 (represented by small
+  p-values for the null hypothesis of equivalent covariate means
+  between treated and control units), now only the covariate totOpTime
+  has a significant p-value at the 95\% level.  However, for year 2014
+  there is still quite substantial covariate imbalance; only the
+  p-value for coal\_no\_scrubber is insignificant.
+
+  
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{lllrr}
+      \toprule
+      variable & variable.type & significance.test & test.statistic & p.value \\ 
+      \midrule
+      totOpTime & continuous & t-test, difference in means & -2.005 & 0.0456 \\ 
+      HeatInput & continuous & t-test, difference in means & -1.307 & 0.1919 \\ 
+      pctCapacity & continuous & t-test, difference in means & -1.679 & 0.0939 \\ 
+      Phase2 & binary & z-test, difference in proportion & 0.053 & 0.8174 \\ 
+      avgNOxControls & continuous & t-test, difference in means & -0.581 & 0.5617 \\ 
+      coal\_no\_scrubber & binary & z-test, difference in proportion & 0.616 & 0.4326 \\ 
+      coal\_with\_scrubber & binary & z-test, difference in proportion & 0.554 & 0.4566 \\ 
+      EPA.Region & categorical & chi-sq test of independence & 5.318 & 0.8057 \\ 
+      \bottomrule
+    \end{tabular}
+    \caption{Covariate balance check for one-to-one propensity score matching (Problem 2(b)), year 2002} 
+    \label{tab-bal2b-02}
+  \end{table}
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{lllrr}
+      \toprule
+      variable & variable.type & significance.test & test.statistic & p.value \\ 
+      \midrule
+      totOpTime & continuous & t-test, difference in means & 6.691 & $<$ 0.0001 \\ 
+      HeatInput & continuous & t-test, difference in means & 5.768 & $<$ 0.0001 \\ 
+      pctCapacity & continuous & t-test, difference in means & 8.138 & $<$ 0.0001 \\ 
+      Phase2 & binary & z-test, difference in proportion & 32.167 & $<$ 0.0001 \\ 
+      avgNOxControls & continuous & t-test, difference in means & -4.288 & $<$ 0.0001 \\ 
+      coal\_no\_scrubber & binary & z-test, difference in proportion & 34.534 & $<$ 0.0001 \\ 
+      coal\_with\_scrubber & binary & z-test, difference in proportion & 1.932 & 0.1645 \\ 
+      EPA.Region & categorical & chi-sq test of independence & 150.241 & $<$ 0.0001 \\ 
+      \bottomrule
+    \end{tabular}
+    \caption{Covariate balance check for one-to-one propensity score matching (Problem 2(b)), year 2014} 
+    \label{tab-bal2b-14}
+  \end{table}
 
 \item
   % -------------------------------------------------------------------------
@@ -55,6 +138,88 @@
     of the estimated propensity score distribution.
   \end{quoting}
   % -------------------------------------------------------------------------
+  After using a caliber to obtain matched pairs, the ATT estimates are
+  now
+  \begin{itemize}
+  \item 2002: -0.9699 (SE = $0.0944$, $p < 0.0001$) using 166 matched
+    pairs (60 unmatched treatment units)
+  \item 2014: -0.7576 (SE $= 0.0554$, $p < 0.0001$) using 496 matched
+    pairs (425 unmatched treatment units)
+  \end{itemize}
+  Tables~\ref{tab:lm-2c-02} and \ref{tab:lm-2c-14} provide the full
+  results of the linear model.
+
+  Tables~\ref{tab-bal2c-02} and \ref{tab-bal2c-14} show the covariate
+  balance checks.  In this case, every covariate appears to be
+  balanced for each year because every p-value is insignificant,
+  demonstrating the advantages of using a caliber.  However, this
+  comes at a price of discarding a sizable portion unmatched treatment
+  units in the estimation of the treatment effect, leading to notably
+  larger standard errors.
+
+  
+
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{lllrr}
+      \toprule
+      variable & variable.type & significance.test & test.statistic & p.value \\ 
+      \midrule
+      totOpTime & continuous & t-test, difference in means & -0.119 & 0.9054 \\ 
+      HeatInput & continuous & t-test, difference in means & 0.253 & 0.8007 \\ 
+      pctCapacity & continuous & t-test, difference in means & -0.039 & 0.9692 \\ 
+      Phase2 & binary & z-test, difference in proportion & 0.016 & 0.8979 \\ 
+      avgNOxControls & continuous & t-test, difference in means & 0.616 & 0.5382 \\ 
+      coal\_no\_scrubber & binary & z-test, difference in proportion & 0.000 & 1.0000 \\ 
+      coal\_with\_scrubber & binary & z-test, difference in proportion & 0.161 & 0.6880 \\ 
+      EPA.Region & categorical & chi-sq test of independence & 5.633 & 0.7760 \\ 
+      \bottomrule
+    \end{tabular}
+    \caption{Covariate balance check for one-to-one propensity score matching with a caliber (Problem 2(c)), year 2002} 
+    \label{tab-bal2c-02}
+  \end{table}
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{lllrr}
+      \toprule
+      variable & variable.type & significance.test & test.statistic & p.value \\ 
+      \midrule
+      totOpTime & continuous & t-test, difference in means & -0.881 & 0.3784 \\ 
+      HeatInput & continuous & t-test, difference in means & -0.527 & 0.5986 \\ 
+      pctCapacity & continuous & t-test, difference in means & -1.071 & 0.2846 \\ 
+      Phase2 & binary & z-test, difference in proportion & 0.243 & 0.6219 \\ 
+      avgNOxControls & continuous & t-test, difference in means & -0.125 & 0.9002 \\ 
+      coal\_no\_scrubber & binary & z-test, difference in proportion & 0.294 & 0.5878 \\ 
+      coal\_with\_scrubber & binary & z-test, difference in proportion & 0.000 & 1.0000 \\ 
+      EPA.Region & categorical & chi-sq test of independence & 8.839 & 0.4523 \\ 
+      \bottomrule
+    \end{tabular}
+    \caption{Covariate balance check for one-to-one propensity score matching with a caliber (Problem 2(c)), year 2014} 
+    \label{tab-bal2c-14}
+  \end{table}
+
+  % \begin{table}[ht]
+  %   \centering
+  %   \begin{tabular}{lllrr}
+  %     \toprule
+  %     variable & variable.type & significance.test & test.statistic & p.value \\ 
+  %     \midrule
+  %     totOpTime & continuous & t-test, difference in means & 6.691 & $<$ 0.0001 \\ 
+  %     HeatInput & continuous & t-test, difference in means & 5.768 & $<$ 0.0001 \\ 
+  %     pctCapacity & continuous & t-test, difference in means & 8.138 & $<$ 0.0001 \\ 
+  %     Phase2 & binary & z-test, difference in proportion & 32.167 & $<$ 0.0001 \\ 
+  %     avgNOxControls & continuous & t-test, difference in means & -4.288 & $<$ 0.0001 \\ 
+  %     coal\_no\_scrubber & binary & z-test, difference in proportion & 34.534 & $<$ 0.0001 \\ 
+  %     coal\_with\_scrubber & binary & z-test, difference in proportion & 1.932 & 0.1645 \\ 
+  %     EPA.Region & categorical & chi-sq test of independence & 150.241 & $<$ 0.0001 \\ 
+  %     \bottomrule
+  %   \end{tabular}
+  %   \caption{Covariate balance check for one-to-one propensity score matching with a caliber (Problem 2(c)), year 2014} 
+  %   \label{tab-bal2c-14}
+  % \end{table}
+
 
 \item
   % -------------------------------------------------------------------------
@@ -65,6 +230,65 @@
     estimated propensity score
   \end{quoting}
   % -------------------------------------------------------------------------
+  Here we use subclassification based on the propensity score
+  estimated from logistic regression, creating 4 subgroups.  We again
+  use a linear model for estimating the treatment effect, and use a
+  weighted estimate using the sizes of the subgroups as weights (and
+  also calculate a weighted estimate of the standard error in the same
+  manner).
+  \begin{itemize}
+  \item 2002: -0.6381 (SE = 0.1285)
+  \item 2014: -0.7314 (SE = 0.0890)
+  \end{itemize}
+  
+
+  Tables~\ref{tab-bal2d-02} and \ref{tab-bal2d-14} contain covariate
+  balance diagnostics, with each column containing the p-values for
+  each subgroup.  For the 2002 data, there are several instances of
+  imbalance suggested by small p-values for the tests of null
+  hypothesis of balance between control and treatment groups.
+  This problem is even worse with the 2014 data.  Using a greater
+  number of subgroups might mitigate this problem.
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{lrrrr}
+      \toprule
+      variable             & subgroup1 & subgroup2 & subgroup3  & subgroup4 \\ 
+      \midrule
+      totOpTime            & 0.5071    & 0.1241    & $<$ 0.0001 & 0.3076    \\ 
+      HeatInput            & 0.4012    & 0.6007    & 0.0029     & 0.1101    \\ 
+      pctCapacity          & 0.9979    & 0.3034    & 0.0012     & 0.3677    \\ 
+      Phase2               & 1.0000    & 1.0000    & 0.5589     & 0.2496    \\ 
+      avgNOxControls       & 0.0337    & 0.0361    & 0.2993     & 0.9215    \\ 
+      coal\_no\_scrubber   & 0.0194    & 1.0000    & 0.8819     & 1.0000    \\ 
+      coal\_with\_scrubber & 0.5845    & 0.8112    & 0.1682     & 1.0000        \\ 
+      EPA.Region           & 0.0002    & 0.0104    & 0.2480     & 0.0530    \\ 
+      \bottomrule
+    \end{tabular}
+    \caption{Covariate balance check for subclassification using propensity score (4 subclasses), year 2002} 
+    \label{tab-bal2d-02}
+  \end{table}
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{lrrrr}
+      \toprule
+      variable & subgroup1 & subgroup2 & subgroup3 & subgroup4 \\ 
+      \midrule
+      totOpTime & $<$ 0.0001 & 0.0013 & 0.0017 & 0.0329 \\ 
+      HeatInput & $<$ 0.0001 & 0.2439 & 0.7289 & 0.0812 \\ 
+      pctCapacity & $<$ 0.0001 & 0.0004 & 0.0059 & 0.1802 \\ 
+      Phase2 & 0.4905 & 0.2273 & 0.8723 & 1.0000 \\ 
+      avgNOxControls & 0.9718 & 0.6884 & 0.0005 & $<$ 0.0001 \\ 
+      coal\_no\_scrubber & 0.7270 & 0.1304 & 0.5050 & 0.4342 \\ 
+      coal\_with\_scrubber & $<$ 0.0001 & 0.6324 & 0.9029 & $<$ 0.0001 \\ 
+      EPA.Region & 0.0006 & $<$ 0.0001 & 0.0036 & 0.0983 \\ 
+      \bottomrule
+    \end{tabular}
+    \caption{Covariate balance check for subclassification using propensity score (4 subclasses), year 2014} 
+    \label{tab-bal2d-14}
+  \end{table}
 
 \item
   % -------------------------------------------------------------------------
@@ -78,17 +302,58 @@
   \end{quoting}
   % -------------------------------------------------------------------------
 
+  We calculate the weights as described, using the propensity score
+  estimated from logistic regression as $\hat e(X_i)$.  We fit a
+  weighted least squares estimate of the linear model in
+  Eq.~\eqref{eq:lin-mod} using the \texttt{lm} command in R.
+  \begin{itemize}
+  \item 2002: -0.5951 (SE = 0.0404)
+  \item 2014: -0.6447 (SE = 0.0404)
+  \end{itemize}
+  Full results from the regression are presented presented in
+  Tables~\ref{tab:lm-2e-02} and \ref{tab:lm-2e-14} at the end of the
+  document.
+  
+  Figure~\ref{fig:weights} shows a visualization of the weights
+  arranged by their magnitude and colored by treatment assignment.  We
+  notice that there are several observations with weights which are
+  strikingly large, and therefore these weights 
+
+  
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{figures/weights-all.pdf}
+    \caption{\label{fig:weights} Unstabilized and stabilized inverse
+      probability weights for Problems (2e) and (2f). }
+  \end{figure}
+
+
 \item
   % -------------------------------------------------------------------------
   % F
   % -------------------------------------------------------------------------
   \begin{quoting}
     Conduct an IPW analysis using stabilized weights and be sure to
-    include a visual sum- mary (e.g., histogram) of the estimated
+    include a visual summary (e.g., histogram) of the estimated
     weights.
   \end{quoting}
   % -------------------------------------------------------------------------
-  
+  Now the weights become
+  $\frac{W_i \cdot \hat \Pr(W_i = 1)}{\hat e(X_i)} + \frac{(1 - W_i)
+    \cdot \hat \Pr(W_i = 0)}{1 - \hat e(X_i)}$ where $\Pr(W_i = 1)$ is
+  the marginal probability of assignment to treatment.  That is,
+  $\hat \Pr(W_i = 1)$ is the sample proportion of units which receive
+  treatment.  These stabilized weights are compared to the stabilized
+  weights in Figure \ref{fig:prop-comp}.  We can see how the variance
+  of the weights is reduced in this manner.  
+  \begin{itemize}
+  \item 2002: -0.5349 (SE = 0.0572)
+  \item 2014: -0.6432 (SE = 0.0407)
+  \end{itemize}
+  Full regression results are given in Tables~\ref{tab:lm-2f-02} and
+  \ref{tab:lm-2f-14} at the end of the document.
+
 \end{enumerate}
 
 %%% Local Variables:

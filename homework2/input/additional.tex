@@ -1,0 +1,394 @@
+
+\section{Additional tables and figures}
+
+% -------------------------------------------------------------------------
+% Problem 1
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \toprule
+                       & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \midrule
+(Intercept)            & 3.1269   & 0.1261     & 24.80   & 0.0000         \\ \midrule
+  Tx                   & -0.9525  & 0.0669     & -14.23  & 0.0000         \\ \midrule
+  totOpTime            & 0.0003   & 0.0000     & 20.27   & 0.0000         \\ 
+  HeatInput            & 0.0000   & 0.0000     & 26.03   & 0.0000         \\ 
+  pctCapacity          & -0.5005  & 0.1727     & -2.90   & 0.0038         \\ 
+  Phase2               & -0.0635  & 0.0581     & -1.09   & 0.2747         \\ 
+  avgNOxControls       & -0.1118  & 0.0427     & -2.62   & 0.0089         \\ 
+  coal\_no\_scrubber   & 1.7313   & 0.0673     & 25.74   & 0.0000         \\ 
+  coal\_with\_scrubber & 1.6007   & 0.0937     & 17.09   & 0.0000         \\ 
+  EPA.Region2          & -0.1837  & 0.1136     & -1.62   & 0.1060         \\ 
+  EPA.Region3          & 0.0960   & 0.1131     & 0.85    & 0.3962         \\ 
+  EPA.Region4          & 0.1514   & 0.1060     & 1.43    & 0.1534         \\ 
+  EPA.Region5          & -0.0944  & 0.1113     & -0.85   & 0.3964         \\ 
+  EPA.Region6          & 0.1331   & 0.1124     & 1.18    & 0.2362         \\ 
+  EPA.Region7          & -0.1584  & 0.1377     & -1.15   & 0.2501         \\ 
+  EPA.Region8          & -0.0929  & 0.1377     & -0.67   & 0.5001         \\ 
+  EPA.Region9          & -0.3204  & 0.1256     & -2.55   & 0.0108         \\ 
+  EPA.Region10         & -0.1175  & 0.3222     & -0.36   & 0.7153         \\ 
+   \bottomrule
+\end{tabular}
+\caption{``Crude'' linear regression model for estimating of treatment
+  effect using 2002 data}
+\label{tab:crude-lm-02}
+\end{table}
+
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \toprule
+                       & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \midrule
+(Intercept)            & 2.3451   & 0.1263     & 18.57   & 0.0000         \\  \midrule
+  Tx                   & -0.7069  & 0.0450     & -15.72  & 0.0000         \\  \midrule
+  totOpTime            & 0.0004   & 0.0000     & 18.85   & 0.0000         \\ 
+  HeatInput            & 0.0000   & 0.0000     & 17.57   & 0.0000         \\ 
+  pctCapacity          & -0.6875  & 0.2424     & -2.84   & 0.0046         \\ 
+  Phase2               & -0.1244  & 0.0556     & -2.24   & 0.0255         \\ 
+  avgNOxControls       & -0.2243  & 0.0386     & -5.81   & 0.0000         \\ 
+  coal\_no\_scrubber   & 2.0186   & 0.0833     & 24.22   & 0.0000         \\ 
+  coal\_with\_scrubber & 1.9837   & 0.0809     & 24.51   & 0.0000         \\ 
+  EPA.Region2          & 0.0422   & 0.1298     & 0.32    & 0.7453         \\ 
+  EPA.Region3          & 0.0476   & 0.1272     & 0.37    & 0.7082         \\ 
+  EPA.Region4          & 0.0133   & 0.1191     & 0.11    & 0.9111         \\ 
+  EPA.Region5          & -0.0205  & 0.1234     & -0.17   & 0.8682         \\ 
+  EPA.Region6          & 0.2671   & 0.1220     & 2.19    & 0.0287         \\ 
+  EPA.Region7          & 0.0379   & 0.1465     & 0.26    & 0.7961         \\ 
+  EPA.Region8          & -0.1861  & 0.1491     & -1.25   & 0.2120         \\ 
+  EPA.Region9          & -0.7299  & 0.1240     & -5.89   & 0.0000         \\ 
+  EPA.Region10         & -0.1352  & 0.2280     & -0.59   & 0.5531         \\ 
+   \bottomrule
+\end{tabular}
+\caption{``Crude'' linear regression model for estimating of treatment
+  effect using 2014 data}
+\label{tab:crude-lm-14}
+\end{table}
+
+% -------------------------------------------------------------------------
+% Problem 2(b)
+
+
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \toprule
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \midrule
+(Intercept) & 3.3332 & 0.1859 & 17.93 & 0.0000 \\ 
+  Z02B & -1.1098 & 0.0832 & -13.34 & 0.0000 \\ 
+  totOpTime & 0.0003 & 0.0000 & 9.67 & 0.0000 \\ 
+  HeatInput & 0.0000 & 0.0000 & 10.87 & 0.0000 \\ 
+  pctCapacity & -0.9851 & 0.3778 & -2.61 & 0.0094 \\ 
+  Phase2 & -0.0967 & 0.1190 & -0.81 & 0.4171 \\ 
+  avgNOxControls & -0.0534 & 0.0838 & -0.64 & 0.5241 \\ 
+  coal\_no\_scrubber & 1.8828 & 0.1546 & 12.18 & 0.0000 \\ 
+  coal\_with\_scrubber & 1.8678 & 0.1952 & 9.57 & 0.0000 \\ 
+  EPA.Region2 & -0.0801 & 0.1383 & -0.58 & 0.5628 \\ 
+  EPA.Region3 & 0.2501 & 0.1679 & 1.49 & 0.1371 \\ 
+  EPA.Region4 & 0.2099 & 0.1532 & 1.37 & 0.1712 \\ 
+  EPA.Region5 & 0.1218 & 0.2445 & 0.50 & 0.6186 \\ 
+  EPA.Region6 & 0.0095 & 0.1634 & 0.06 & 0.9538 \\ 
+  EPA.Region7 & -0.0014 & 0.4712 & -0.00 & 0.9977 \\ 
+  EPA.Region8 & -0.1420 & 0.6301 & -0.23 & 0.8217 \\ 
+  EPA.Region9 & -0.3774 & 0.1470 & -2.57 & 0.0106 \\ 
+  EPA.Region10 & -0.1678 & 0.3545 & -0.47 & 0.6362 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Linear regression model for estimating of treatment effect using 2002 data, after using one-to-one matching (Problem 2(b))} 
+\label{tab:lm-2b-02}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \toprule
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \midrule
+(Intercept) & 2.4951 & 0.1272 & 19.61 & 0.0000 \\ 
+  Z14B & -0.7262 & 0.0443 & -16.40 & 0.0000 \\ 
+  totOpTime & 0.0004 & 0.0000 & 18.86 & 0.0000 \\ 
+  HeatInput & 0.0000 & 0.0000 & 17.38 & 0.0000 \\ 
+  pctCapacity & -0.8106 & 0.2432 & -3.33 & 0.0009 \\ 
+  Phase2 & -0.2393 & 0.0608 & -3.93 & 0.0001 \\ 
+  avgNOxControls & -0.2479 & 0.0389 & -6.37 & 0.0000 \\ 
+  coal\_no\_scrubber & 2.0182 & 0.0872 & 23.14 & 0.0000 \\ 
+  coal\_with\_scrubber & 2.0067 & 0.0817 & 24.57 & 0.0000 \\ 
+  EPA.Region2 & 0.0125 & 0.1277 & 0.10 & 0.9223 \\ 
+  EPA.Region3 & 0.0909 & 0.1257 & 0.72 & 0.4698 \\ 
+  EPA.Region4 & 0.0552 & 0.1174 & 0.47 & 0.6384 \\ 
+  EPA.Region5 & -0.0282 & 0.1221 & -0.23 & 0.8175 \\ 
+  EPA.Region6 & 0.2705 & 0.1213 & 2.23 & 0.0259 \\ 
+  EPA.Region7 & 0.1066 & 0.1546 & 0.69 & 0.4908 \\ 
+  EPA.Region8 & -0.1946 & 0.1493 & -1.30 & 0.1926 \\ 
+  EPA.Region9 & -0.7155 & 0.1219 & -5.87 & 0.0000 \\ 
+  EPA.Region10 & -0.1188 & 0.2241 & -0.53 & 0.5959 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Linear regression model for estimating of treatment effect using 2014 data, after using one-to-one matching (Problem 2(b))} 
+\label{tab:lm-2b-14}
+\end{table}
+
+% -------------------------------------------------------------------------
+% Problem 2c
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \toprule
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \midrule
+(Intercept) & 3.1323 & 0.2012 & 15.57 & 0.0000 \\ 
+  Z02C & -0.9699 & 0.0944 & -10.28 & 0.0000 \\ 
+  totOpTime & 0.0003 & 0.0000 & 7.99 & 0.0000 \\ 
+  HeatInput & 0.0000 & 0.0000 & 10.10 & 0.0000 \\ 
+  pctCapacity & -0.5376 & 0.4134 & -1.30 & 0.1943 \\ 
+  Phase2 & -0.0358 & 0.1311 & -0.27 & 0.7849 \\ 
+  avgNOxControls & -0.0580 & 0.0974 & -0.60 & 0.5520 \\ 
+  coal\_no\_scrubber & 2.1735 & 0.1637 & 13.28 & 0.0000 \\ 
+  coal\_with\_scrubber & 1.8272 & 0.2172 & 8.41 & 0.0000 \\ 
+  EPA.Region2 & 0.0156 & 0.1621 & 0.10 & 0.9236 \\ 
+  EPA.Region3 & 0.0241 & 0.1795 & 0.13 & 0.8934 \\ 
+  EPA.Region4 & 0.0796 & 0.1767 & 0.45 & 0.6525 \\ 
+  EPA.Region5 & 0.2477 & 0.2577 & 0.96 & 0.3371 \\ 
+  EPA.Region6 & 0.0560 & 0.1846 & 0.30 & 0.7620 \\ 
+  EPA.Region7 & -0.0550 & 0.3824 & -0.14 & 0.8857 \\ 
+  EPA.Region8 & -0.7518 & 0.6312 & -1.19 & 0.2346 \\ 
+  EPA.Region9 & -0.2674 & 0.1889 & -1.42 & 0.1579 \\ 
+  EPA.Region10 & -1.0731 & 0.9009 & -1.19 & 0.2345 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Linear regression model for estimating of treatment effect
+  using 2002 data, after using one-to-one matching with a caliber
+  (Problem 2(c))}
+\label{tab:lm-2c-02}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \toprule
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \midrule
+(Intercept) & 2.2247 & 0.2020 & 11.01 & 0.0000 \\ 
+  Z14C & -0.7576 & 0.0554 & -13.67 & 0.0000 \\ 
+  totOpTime & 0.0004 & 0.0000 & 13.79 & 0.0000 \\ 
+  HeatInput & 0.0000 & 0.0000 & 13.71 & 0.0000 \\ 
+  pctCapacity & -0.8967 & 0.3137 & -2.86 & 0.0043 \\ 
+  Phase2 & -0.1476 & 0.0838 & -1.76 & 0.0787 \\ 
+  avgNOxControls & -0.2089 & 0.0531 & -3.94 & 0.0001 \\ 
+  coal\_no\_scrubber & 2.1244 & 0.1200 & 17.71 & 0.0000 \\ 
+  coal\_with\_scrubber & 2.0743 & 0.1066 & 19.46 & 0.0000 \\ 
+  EPA.Region2 & 0.3108 & 0.2032 & 1.53 & 0.1264 \\ 
+  EPA.Region3 & 0.4681 & 0.2045 & 2.29 & 0.0223 \\ 
+  EPA.Region4 & 0.3958 & 0.1947 & 2.03 & 0.0423 \\ 
+  EPA.Region5 & 0.3375 & 0.1982 & 1.70 & 0.0890 \\ 
+  EPA.Region6 & 0.4620 & 0.1950 & 2.37 & 0.0180 \\ 
+  EPA.Region7 & 0.3952 & 0.2372 & 1.67 & 0.0959 \\ 
+  EPA.Region8 & -0.0833 & 0.2218 & -0.38 & 0.7072 \\ 
+  EPA.Region9 & -0.4709 & 0.2047 & -2.30 & 0.0216 \\ 
+  EPA.Region10 & -0.7215 & 0.3992 & -1.81 & 0.0710 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Linear regression model for estimating of treatment effect using 2014 data, after using one-to-one matching with a caliber (Problem 2(c))} 
+\label{tab:lm-2c-14}
+\end{table}
+
+% -------------------------------------------------------------------------
+% E
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \toprule
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \midrule
+(Intercept) & 3.1828 & 0.1129 & 28.20 & 0.0000 \\ 
+  Z02 & -0.5951 & 0.0404 & -14.73 & 0.0000 \\ 
+  totOpTime & 0.0003 & 0.0000 & 18.70 & 0.0000 \\ 
+  HeatInput & 0.0000 & 0.0000 & 30.09 & 0.0000 \\ 
+  pctCapacity & -0.7127 & 0.1780 & -4.00 & 0.0001 \\ 
+  Phase2 & -0.1846 & 0.0525 & -3.52 & 0.0005 \\ 
+  avgNOxControls & -0.0141 & 0.0383 & -0.37 & 0.7122 \\ 
+  coal\_no\_scrubber & 2.0877 & 0.0673 & 31.02 & 0.0000 \\ 
+  coal\_with\_scrubber & 1.8016 & 0.0861 & 20.92 & 0.0000 \\ 
+  EPA.Region2 & -0.1740 & 0.1062 & -1.64 & 0.1016 \\ 
+  EPA.Region3 & 0.2463 & 0.1024 & 2.40 & 0.0163 \\ 
+  EPA.Region4 & 0.1218 & 0.0965 & 1.26 & 0.2073 \\ 
+  EPA.Region5 & -0.0723 & 0.1008 & -0.72 & 0.4737 \\ 
+  EPA.Region6 & 0.0904 & 0.1037 & 0.87 & 0.3833 \\ 
+  EPA.Region7 & -0.0247 & 0.1303 & -0.19 & 0.8498 \\ 
+  EPA.Region8 & -0.2829 & 0.1374 & -2.06 & 0.0396 \\ 
+  EPA.Region9 & -0.3766 & 0.1209 & -3.12 & 0.0019 \\ 
+  EPA.Region10 & -0.2326 & 0.3523 & -0.66 & 0.5091 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Linear regression model with inverse probability weights for estimating of treatment effect using 2002 data (Problem 2(e))} 
+\label{tab:lm-2e-02}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \toprule
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \midrule
+(Intercept) & 2.3423 & 0.1311 & 17.87 & 0.0000 \\ 
+  Z14 & -0.6447 & 0.0404 & -15.96 & 0.0000 \\ 
+  totOpTime & 0.0004 & 0.0000 & 19.95 & 0.0000 \\ 
+  HeatInput & 0.0000 & 0.0000 & 16.73 & 0.0000 \\ 
+  pctCapacity & -0.5570 & 0.2084 & -2.67 & 0.0076 \\ 
+  Phase2 & -0.1954 & 0.0584 & -3.34 & 0.0008 \\ 
+  avgNOxControls & -0.1584 & 0.0392 & -4.04 & 0.0001 \\ 
+  coal\_no\_scrubber & 2.4075 & 0.0803 & 29.97 & 0.0000 \\ 
+  coal\_with\_scrubber & 2.3278 & 0.0768 & 30.32 & 0.0000 \\ 
+  EPA.Region2 & 0.0331 & 0.1329 & 0.25 & 0.8032 \\ 
+  EPA.Region3 & 0.1329 & 0.1289 & 1.03 & 0.3029 \\ 
+  EPA.Region4 & 0.0253 & 0.1217 & 0.21 & 0.8355 \\ 
+  EPA.Region5 & -0.0472 & 0.1255 & -0.38 & 0.7069 \\ 
+  EPA.Region6 & 0.1828 & 0.1232 & 1.48 & 0.1380 \\ 
+  EPA.Region7 & 0.3232 & 0.1465 & 2.21 & 0.0275 \\ 
+  EPA.Region8 & -0.4678 & 0.1449 & -3.23 & 0.0013 \\ 
+  EPA.Region9 & -0.7337 & 0.1245 & -5.89 & 0.0000 \\ 
+  EPA.Region10 & -0.1528 & 0.2527 & -0.60 & 0.5455 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Linear regression model with inverse probability weights for estimating of treatment effect using 2014 data (Problem 2(e))} 
+\label{tab:lm-2e-14}
+\end{table}
+
+% -------------------------------------------------------------------------
+% F
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \toprule
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \midrule
+(Intercept) & 3.2503 & 0.1151 & 28.23 & 0.0000 \\ 
+  Z02 & -0.5349 & 0.0572 & -9.36 & 0.0000 \\ 
+  totOpTime & 0.0003 & 0.0000 & 20.27 & 0.0000 \\ 
+  HeatInput & 0.0000 & 0.0000 & 27.49 & 0.0000 \\ 
+  pctCapacity & -0.5994 & 0.1718 & -3.49 & 0.0005 \\ 
+  Phase2 & -0.0699 & 0.0559 & -1.25 & 0.2112 \\ 
+  avgNOxControls & -0.0864 & 0.0410 & -2.11 & 0.0351 \\ 
+  coal\_no\_scrubber & 1.7745 & 0.0669 & 26.53 & 0.0000 \\ 
+  coal\_with\_scrubber & 1.5858 & 0.0904 & 17.53 & 0.0000 \\ 
+  EPA.Region2 & -0.2973 & 0.1107 & -2.69 & 0.0073 \\ 
+  EPA.Region3 & -0.0205 & 0.1078 & -0.19 & 0.8493 \\ 
+  EPA.Region4 & 0.0122 & 0.1013 & 0.12 & 0.9041 \\ 
+  EPA.Region5 & -0.1942 & 0.1056 & -1.84 & 0.0661 \\ 
+  EPA.Region6 & -0.0441 & 0.1085 & -0.41 & 0.6841 \\ 
+  EPA.Region7 & -0.2497 & 0.1336 & -1.87 & 0.0618 \\ 
+  EPA.Region8 & -0.2720 & 0.1353 & -2.01 & 0.0445 \\ 
+  EPA.Region9 & -0.2359 & 0.1272 & -1.85 & 0.0638 \\ 
+  EPA.Region10 & -0.3239 & 0.3999 & -0.81 & 0.4181 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Linear regression model with stabilized inverse probability
+  weights for estimating of treatment effect using 2002 data (Problem
+  2(f))}
+\label{tab:lm-2f-02}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \toprule
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \midrule
+(Intercept) & 2.3351 & 0.1314 & 17.77 & 0.0000 \\ 
+  Z14 & -0.6432 & 0.0407 & -15.81 & 0.0000 \\ 
+  totOpTime & 0.0004 & 0.0000 & 19.94 & 0.0000 \\ 
+  HeatInput & 0.0000 & 0.0000 & 16.70 & 0.0000 \\ 
+  pctCapacity & -0.5593 & 0.2079 & -2.69 & 0.0072 \\ 
+  Phase2 & -0.1845 & 0.0584 & -3.16 & 0.0016 \\ 
+  avgNOxControls & -0.1534 & 0.0395 & -3.89 & 0.0001 \\ 
+  coal\_no\_scrubber & 2.4006 & 0.0806 & 29.77 & 0.0000 \\ 
+  coal\_with\_scrubber & 2.3399 & 0.0769 & 30.41 & 0.0000 \\ 
+  EPA.Region2 & 0.0487 & 0.1335 & 0.36 & 0.7153 \\ 
+  EPA.Region3 & 0.1181 & 0.1294 & 0.91 & 0.3615 \\ 
+  EPA.Region4 & 0.0249 & 0.1222 & 0.20 & 0.8385 \\ 
+  EPA.Region5 & -0.0609 & 0.1260 & -0.48 & 0.6288 \\ 
+  EPA.Region6 & 0.1914 & 0.1237 & 1.55 & 0.1221 \\ 
+  EPA.Region7 & 0.2943 & 0.1473 & 2.00 & 0.0459 \\ 
+  EPA.Region8 & -0.4506 & 0.1458 & -3.09 & 0.0020 \\ 
+  EPA.Region9 & -0.7405 & 0.1250 & -5.92 & 0.0000 \\ 
+  EPA.Region10 & -0.1873 & 0.2546 & -0.74 & 0.4619 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Linear regression model with stabilized inverse probability weights for estimating of treatment effect using 2014 data (Problem 2(f))} 
+\label{tab:lm-2f-14}
+\end{table}
+
+% -------------------------------------------------------------------------
+% Problem 4
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \toprule
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \midrule
+(Intercept) & 3.1718 & 0.1165 & 27.23 & 0.0000 \\ 
+  Z02 & -0.6651 & 0.0434 & -15.32 & 0.0000 \\ 
+  totOpTime & 0.0003 & 0.0000 & 19.24 & 0.0000 \\ 
+  HeatInput & 0.0000 & 0.0000 & 29.39 & 0.0000 \\ 
+  pctCapacity & -0.7669 & 0.1769 & -4.34 & 0.0000 \\ 
+  Phase2 & -0.1569 & 0.0557 & -2.82 & 0.0049 \\ 
+  avgNOxControls & -0.0828 & 0.0416 & -1.99 & 0.0468 \\ 
+  coal\_no\_scrubber & 1.9802 & 0.0690 & 28.69 & 0.0000 \\ 
+  coal\_with\_scrubber & 1.6800 & 0.0916 & 18.34 & 0.0000 \\ 
+  EPA.Region2 & -0.1415 & 0.1060 & -1.33 & 0.1822 \\ 
+  EPA.Region3 & 0.2399 & 0.1045 & 2.30 & 0.0218 \\ 
+  EPA.Region4 & 0.1718 & 0.0976 & 1.76 & 0.0787 \\ 
+  EPA.Region5 & -0.0032 & 0.1043 & -0.03 & 0.9753 \\ 
+  EPA.Region6 & 0.0617 & 0.1035 & 0.60 & 0.5514 \\ 
+  EPA.Region7 & -0.1163 & 0.1349 & -0.86 & 0.3886 \\ 
+  EPA.Region8 & -0.1497 & 0.1441 & -1.04 & 0.2992 \\ 
+  EPA.Region9 & -0.4095 & 0.1196 & -3.42 & 0.0006 \\ 
+  EPA.Region10 & -0.2244 & 0.3406 & -0.66 & 0.5102 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Linear regression model with inverse probability weights (estimated using BART) for estimating of treatment effect using 2002 data (Problem 4)} 
+\label{tab:lm-2g-02}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \toprule
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \midrule
+(Intercept) & 2.2510 & 0.1222 & 18.42 & 0.0000 \\ 
+  Z14 & -0.8018 & 0.0410 & -19.57 & 0.0000 \\ 
+  totOpTime & 0.0004 & 0.0000 & 19.65 & 0.0000 \\ 
+  HeatInput & 0.0000 & 0.0000 & 16.74 & 0.0000 \\ 
+  pctCapacity & -0.9289 & 0.2388 & -3.89 & 0.0001 \\ 
+  Phase2 & -0.0768 & 0.0598 & -1.29 & 0.1988 \\ 
+  avgNOxControls & -0.2529 & 0.0388 & -6.52 & 0.0000 \\ 
+  coal\_no\_scrubber & 2.1620 & 0.0828 & 26.12 & 0.0000 \\ 
+  coal\_with\_scrubber & 2.0603 & 0.0820 & 25.13 & 0.0000 \\ 
+  EPA.Region2 & 0.2323 & 0.1240 & 1.87 & 0.0612 \\ 
+  EPA.Region3 & 0.2306 & 0.1192 & 1.93 & 0.0532 \\ 
+  EPA.Region4 & 0.1503 & 0.1108 & 1.36 & 0.1751 \\ 
+  EPA.Region5 & 0.1180 & 0.1157 & 1.02 & 0.3077 \\ 
+  EPA.Region6 & 0.2884 & 0.1125 & 2.56 & 0.0104 \\ 
+  EPA.Region7 & 0.3200 & 0.1419 & 2.26 & 0.0242 \\ 
+  EPA.Region8 & -0.2502 & 0.1402 & -1.79 & 0.0743 \\ 
+  EPA.Region9 & -0.7432 & 0.1176 & -6.32 & 0.0000 \\ 
+  EPA.Region10 & 0.0426 & 0.2432 & 0.18 & 0.8610 \\ 
+   \bottomrule
+\end{tabular}
+\caption{Linear regression model with inverse probability weights (estimated using BART) for estimating of treatment effect using 2014 data (Problem 4)} 
+\label{tab:lm-2g-14}
+\end{table}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
