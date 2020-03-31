@@ -2,7 +2,7 @@
 \section{Additional tables and figures}
 
 % -------------------------------------------------------------------------
-% Problem 1
+% Exercise 1
 
 \begin{table}[ht]
 \centering
@@ -42,8 +42,8 @@
   \toprule
                        & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \midrule
-(Intercept)            & 2.3451   & 0.1263     & 18.57   & 0.0000         \\  \midrule
-  Tx                   & -0.7069  & 0.0450     & -15.72  & 0.0000         \\  \midrule
+(Intercept)            & 2.3451   & 0.1263     & 18.57   & 0.0000         \\  
+  Tx                   & -0.7069  & 0.0450     & -15.72  & 0.0000         \\  
   totOpTime            & 0.0004   & 0.0000     & 18.85   & 0.0000         \\ 
   HeatInput            & 0.0000   & 0.0000     & 17.57   & 0.0000         \\ 
   pctCapacity          & -0.6875  & 0.2424     & -2.84   & 0.0046         \\ 
@@ -68,7 +68,7 @@
 \end{table}
 
 % -------------------------------------------------------------------------
-% Problem 2(b)
+% Exercise 2(b)
 
 
 
@@ -79,7 +79,7 @@
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \midrule
 (Intercept) & 3.3332 & 0.1859 & 17.93 & 0.0000 \\ 
-  Z02B & -1.1098 & 0.0832 & -13.34 & 0.0000 \\ 
+  Tx & -1.1098 & 0.0832 & -13.34 & 0.0000 \\ 
   totOpTime & 0.0003 & 0.0000 & 9.67 & 0.0000 \\ 
   HeatInput & 0.0000 & 0.0000 & 10.87 & 0.0000 \\ 
   pctCapacity & -0.9851 & 0.3778 & -2.61 & 0.0094 \\ 
@@ -98,7 +98,7 @@
   EPA.Region10 & -0.1678 & 0.3545 & -0.47 & 0.6362 \\ 
    \bottomrule
 \end{tabular}
-\caption{Linear regression model for estimating of treatment effect using 2002 data, after using one-to-one matching (Problem 2(b))} 
+\caption{Linear regression model for estimating of treatment effect using 2002 data, after using one-to-one matching (Exercise 2(b))} 
 \label{tab:lm-2b-02}
 \end{table}
 
@@ -109,7 +109,7 @@
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \midrule
 (Intercept) & 2.4951 & 0.1272 & 19.61 & 0.0000 \\ 
-  Z14B & -0.7262 & 0.0443 & -16.40 & 0.0000 \\ 
+  Tx & -0.7262 & 0.0443 & -16.40 & 0.0000 \\ 
   totOpTime & 0.0004 & 0.0000 & 18.86 & 0.0000 \\ 
   HeatInput & 0.0000 & 0.0000 & 17.38 & 0.0000 \\ 
   pctCapacity & -0.8106 & 0.2432 & -3.33 & 0.0009 \\ 
@@ -128,12 +128,12 @@
   EPA.Region10 & -0.1188 & 0.2241 & -0.53 & 0.5959 \\ 
    \bottomrule
 \end{tabular}
-\caption{Linear regression model for estimating of treatment effect using 2014 data, after using one-to-one matching (Problem 2(b))} 
+\caption{Linear regression model for estimating of treatment effect using 2014 data, after using one-to-one matching (Exercise 2(b))} 
 \label{tab:lm-2b-14}
 \end{table}
 
 % -------------------------------------------------------------------------
-% Problem 2c
+% Exercise 2c
 
 \begin{table}[ht]
 \centering
@@ -142,7 +142,7 @@
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \midrule
 (Intercept) & 3.1323 & 0.2012 & 15.57 & 0.0000 \\ 
-  Z02C & -0.9699 & 0.0944 & -10.28 & 0.0000 \\ 
+  Tx & -0.9699 & 0.0944 & -10.28 & 0.0000 \\ 
   totOpTime & 0.0003 & 0.0000 & 7.99 & 0.0000 \\ 
   HeatInput & 0.0000 & 0.0000 & 10.10 & 0.0000 \\ 
   pctCapacity & -0.5376 & 0.4134 & -1.30 & 0.1943 \\ 
@@ -162,8 +162,8 @@
    \bottomrule
 \end{tabular}
 \caption{Linear regression model for estimating of treatment effect
-  using 2002 data, after using one-to-one matching with a caliber
-  (Problem 2(c))}
+  using 2002 data, after using one-to-one matching with a caliper
+  (Exercise 2(c))}
 \label{tab:lm-2c-02}
 \end{table}
 
@@ -174,7 +174,7 @@
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \midrule
 (Intercept) & 2.2247 & 0.2020 & 11.01 & 0.0000 \\ 
-  Z14C & -0.7576 & 0.0554 & -13.67 & 0.0000 \\ 
+  Tx & -0.7576 & 0.0554 & -13.67 & 0.0000 \\ 
   totOpTime & 0.0004 & 0.0000 & 13.79 & 0.0000 \\ 
   HeatInput & 0.0000 & 0.0000 & 13.71 & 0.0000 \\ 
   pctCapacity & -0.8967 & 0.3137 & -2.86 & 0.0043 \\ 
@@ -193,7 +193,7 @@
   EPA.Region10 & -0.7215 & 0.3992 & -1.81 & 0.0710 \\ 
    \bottomrule
 \end{tabular}
-\caption{Linear regression model for estimating of treatment effect using 2014 data, after using one-to-one matching with a caliber (Problem 2(c))} 
+\caption{Linear regression model for estimating of treatment effect using 2014 data, after using one-to-one matching with a caliper (Exercise 2(c))} 
 \label{tab:lm-2c-14}
 \end{table}
 
@@ -207,7 +207,7 @@
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \midrule
 (Intercept) & 3.1828 & 0.1129 & 28.20 & 0.0000 \\ 
-  Z02 & -0.5951 & 0.0404 & -14.73 & 0.0000 \\ 
+  Tx & -0.5951 & 0.0404 & -14.73 & 0.0000 \\ 
   totOpTime & 0.0003 & 0.0000 & 18.70 & 0.0000 \\ 
   HeatInput & 0.0000 & 0.0000 & 30.09 & 0.0000 \\ 
   pctCapacity & -0.7127 & 0.1780 & -4.00 & 0.0001 \\ 
@@ -226,7 +226,7 @@
   EPA.Region10 & -0.2326 & 0.3523 & -0.66 & 0.5091 \\ 
    \bottomrule
 \end{tabular}
-\caption{Linear regression model with inverse probability weights for estimating of treatment effect using 2002 data (Problem 2(e))} 
+\caption{Linear regression model with inverse probability weights for estimating of treatment effect using 2002 data (Exercise 2(e))} 
 \label{tab:lm-2e-02}
 \end{table}
 
@@ -237,7 +237,7 @@
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \midrule
 (Intercept) & 2.3423 & 0.1311 & 17.87 & 0.0000 \\ 
-  Z14 & -0.6447 & 0.0404 & -15.96 & 0.0000 \\ 
+  Tx & -0.6447 & 0.0404 & -15.96 & 0.0000 \\ 
   totOpTime & 0.0004 & 0.0000 & 19.95 & 0.0000 \\ 
   HeatInput & 0.0000 & 0.0000 & 16.73 & 0.0000 \\ 
   pctCapacity & -0.5570 & 0.2084 & -2.67 & 0.0076 \\ 
@@ -256,7 +256,7 @@
   EPA.Region10 & -0.1528 & 0.2527 & -0.60 & 0.5455 \\ 
    \bottomrule
 \end{tabular}
-\caption{Linear regression model with inverse probability weights for estimating of treatment effect using 2014 data (Problem 2(e))} 
+\caption{Linear regression model with inverse probability weights for estimating of treatment effect using 2014 data (Exercise 2(e))} 
 \label{tab:lm-2e-14}
 \end{table}
 
@@ -270,7 +270,7 @@
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \midrule
 (Intercept) & 3.2503 & 0.1151 & 28.23 & 0.0000 \\ 
-  Z02 & -0.5349 & 0.0572 & -9.36 & 0.0000 \\ 
+  Tx & -0.5349 & 0.0572 & -9.36 & 0.0000 \\ 
   totOpTime & 0.0003 & 0.0000 & 20.27 & 0.0000 \\ 
   HeatInput & 0.0000 & 0.0000 & 27.49 & 0.0000 \\ 
   pctCapacity & -0.5994 & 0.1718 & -3.49 & 0.0005 \\ 
@@ -290,7 +290,7 @@
    \bottomrule
 \end{tabular}
 \caption{Linear regression model with stabilized inverse probability
-  weights for estimating of treatment effect using 2002 data (Problem
+  weights for estimating of treatment effect using 2002 data (Exercise
   2(f))}
 \label{tab:lm-2f-02}
 \end{table}
@@ -302,7 +302,7 @@
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \midrule
 (Intercept) & 2.3351 & 0.1314 & 17.77 & 0.0000 \\ 
-  Z14 & -0.6432 & 0.0407 & -15.81 & 0.0000 \\ 
+  Tx & -0.6432 & 0.0407 & -15.81 & 0.0000 \\ 
   totOpTime & 0.0004 & 0.0000 & 19.94 & 0.0000 \\ 
   HeatInput & 0.0000 & 0.0000 & 16.70 & 0.0000 \\ 
   pctCapacity & -0.5593 & 0.2079 & -2.69 & 0.0072 \\ 
@@ -321,12 +321,12 @@
   EPA.Region10 & -0.1873 & 0.2546 & -0.74 & 0.4619 \\ 
    \bottomrule
 \end{tabular}
-\caption{Linear regression model with stabilized inverse probability weights for estimating of treatment effect using 2014 data (Problem 2(f))} 
+\caption{Linear regression model with stabilized inverse probability weights for estimating of treatment effect using 2014 data (Exercise 2(f))} 
 \label{tab:lm-2f-14}
 \end{table}
 
 % -------------------------------------------------------------------------
-% Problem 4
+% Exercise 4
 
 \begin{table}[ht]
 \centering
@@ -335,7 +335,7 @@
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \midrule
 (Intercept) & 3.1718 & 0.1165 & 27.23 & 0.0000 \\ 
-  Z02 & -0.6651 & 0.0434 & -15.32 & 0.0000 \\ 
+  Tx & -0.6651 & 0.0434 & -15.32 & 0.0000 \\ 
   totOpTime & 0.0003 & 0.0000 & 19.24 & 0.0000 \\ 
   HeatInput & 0.0000 & 0.0000 & 29.39 & 0.0000 \\ 
   pctCapacity & -0.7669 & 0.1769 & -4.34 & 0.0000 \\ 
@@ -354,7 +354,7 @@
   EPA.Region10 & -0.2244 & 0.3406 & -0.66 & 0.5102 \\ 
    \bottomrule
 \end{tabular}
-\caption{Linear regression model with inverse probability weights (estimated using BART) for estimating of treatment effect using 2002 data (Problem 4)} 
+\caption{Linear regression model with inverse probability weights (estimated using BART) for estimating of treatment effect using 2002 data (Exercise 4)} 
 \label{tab:lm-2g-02}
 \end{table}
 
@@ -365,7 +365,7 @@
  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
   \midrule
 (Intercept) & 2.2510 & 0.1222 & 18.42 & 0.0000 \\ 
-  Z14 & -0.8018 & 0.0410 & -19.57 & 0.0000 \\ 
+  Tx & -0.8018 & 0.0410 & -19.57 & 0.0000 \\ 
   totOpTime & 0.0004 & 0.0000 & 19.65 & 0.0000 \\ 
   HeatInput & 0.0000 & 0.0000 & 16.74 & 0.0000 \\ 
   pctCapacity & -0.9289 & 0.2388 & -3.89 & 0.0001 \\ 
@@ -384,7 +384,9 @@
   EPA.Region10 & 0.0426 & 0.2432 & 0.18 & 0.8610 \\ 
    \bottomrule
 \end{tabular}
-\caption{Linear regression model with inverse probability weights (estimated using BART) for estimating of treatment effect using 2014 data (Problem 4)} 
+\caption{Linear regression model with inverse probability weights
+  (estimated using BART) for estimating of treatment effect using 2014
+  data (Exercise 4)}
 \label{tab:lm-2g-14}
 \end{table}
 

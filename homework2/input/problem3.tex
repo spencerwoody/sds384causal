@@ -7,6 +7,19 @@
   from one another.
 \end{quoting}
 
+Every analysis in Exercise 2 used a linear model to estimate the
+causal effect of SnCR installation on log-emissions of NO$_x$.
+However, the estimates differed considerably.  This is all due to how
+observations were either selected or weighted.  That is, matching,
+both with and without a caliper, removed many observations from
+consideration when estimating the parameters of the linear model in
+Eq.~\eqref{eq:lin-mod} because there were not any units with
+adequately similar propensity scores to these units.  Alternatively,
+the IPW analyses included every observation in the analysis, but
+weighted each one differently.  Finally, the subclassification
+analysis also included every unit, but weighted each one according to
+the size of the subclassiciation (based on the estimated propensity
+score) to which it belonged.
 
 %%% Local Variables:
 %%% mode: latex

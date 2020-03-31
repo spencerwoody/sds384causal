@@ -61,7 +61,7 @@
     without replacement
   \end{quoting}
   % -------------------------------------------------------------------------
-  As in Problem 1, and throughout the rest of this problem, we use the
+  As in Exercise 1, and throughout the rest of this problem, we use the
   linear model in Eq.~\eqref{eq:lin-mod} to estimate the treatment
   effect.  We use matching without replacement, matching each treated
   unit to a control unit.  Then these matched pairs are used to
@@ -73,13 +73,16 @@
   \item 2014: -0.7262 (SE = 0.0443, $p < 0.0001$) using 921 matched
     pairs
   \end{itemize}
-  Tables~\ref{tab:lm-2b-02} and \ref{tab:lm-2b-14} provide the full
-  results of the linear model.
+  As before in Exercise 1, there is a significant negative effect
+  detected for both years, and the effect is larger in magnitude for
+  year 2002.  Also, the estimated effect for year 2002 is larger than
+  it was for the crude analysis.  Tables~\ref{tab:lm-2b-02} and
+  \ref{tab:lm-2b-14} provide the full results of the linear model.
 
   Tables~\ref{tab-bal2b-02} and \ref{tab-bal2b-14} below provide the
   balance assessment.  For year 2002, there is a remarkable gain in
   covariate balance from matching.  Whereas many covariates appeared
-  imbalanced in the crude analysis of Problem 1 (represented by small
+  imbalanced in the crude analysis of Exercise 1 (represented by small
   p-values for the null hypothesis of equivalent covariate means
   between treated and control units), now only the covariate totOpTime
   has a significant p-value at the 95\% level.  However, for year 2014
@@ -104,7 +107,7 @@
       EPA.Region & categorical & chi-sq test of independence & 5.318 & 0.8057 \\ 
       \bottomrule
     \end{tabular}
-    \caption{Covariate balance check for one-to-one propensity score matching (Problem 2(b)), year 2002} 
+    \caption{Covariate balance check for one-to-one propensity score matching (Exercise 2(b)), year 2002} 
     \label{tab-bal2b-02}
   \end{table}
 
@@ -124,7 +127,7 @@
       EPA.Region & categorical & chi-sq test of independence & 150.241 & $<$ 0.0001 \\ 
       \bottomrule
     \end{tabular}
-    \caption{Covariate balance check for one-to-one propensity score matching (Problem 2(b)), year 2014} 
+    \caption{Covariate balance check for one-to-one propensity score matching (Exercise 2(b)), year 2014} 
     \label{tab-bal2b-14}
   \end{table}
 
@@ -138,7 +141,7 @@
     of the estimated propensity score distribution.
   \end{quoting}
   % -------------------------------------------------------------------------
-  After using a caliber to obtain matched pairs, the ATT estimates are
+  After using a caliper to obtain matched pairs, the ATT estimates are
   now
   \begin{itemize}
   \item 2002: -0.9699 (SE = $0.0944$, $p < 0.0001$) using 166 matched
@@ -146,13 +149,15 @@
   \item 2014: -0.7576 (SE $= 0.0554$, $p < 0.0001$) using 496 matched
     pairs (425 unmatched treatment units)
   \end{itemize}
+  As before, there is a significant negative effect detected for both
+  years, and the effect is larger in magnitude for year 2002.
   Tables~\ref{tab:lm-2c-02} and \ref{tab:lm-2c-14} provide the full
   results of the linear model.
 
   Tables~\ref{tab-bal2c-02} and \ref{tab-bal2c-14} show the covariate
   balance checks.  In this case, every covariate appears to be
   balanced for each year because every p-value is insignificant,
-  demonstrating the advantages of using a caliber.  However, this
+  demonstrating the advantages of using a caliper.  However, this
   comes at a price of discarding a sizable portion unmatched treatment
   units in the estimation of the treatment effect, leading to notably
   larger standard errors.
@@ -176,7 +181,8 @@
       EPA.Region & categorical & chi-sq test of independence & 5.633 & 0.7760 \\ 
       \bottomrule
     \end{tabular}
-    \caption{Covariate balance check for one-to-one propensity score matching with a caliber (Problem 2(c)), year 2002} 
+    \caption{Covariate balance check for one-to-one propensity score
+      matching with a caliper (Exercise 2(c)), year 2002}
     \label{tab-bal2c-02}
   \end{table}
 
@@ -196,7 +202,8 @@
       EPA.Region & categorical & chi-sq test of independence & 8.839 & 0.4523 \\ 
       \bottomrule
     \end{tabular}
-    \caption{Covariate balance check for one-to-one propensity score matching with a caliber (Problem 2(c)), year 2014} 
+    \caption{Covariate balance check for one-to-one propensity score
+      matching with a caliper (Exercise 2(c)), year 2014}
     \label{tab-bal2c-14}
   \end{table}
 
@@ -216,7 +223,8 @@
   %     EPA.Region & categorical & chi-sq test of independence & 150.241 & $<$ 0.0001 \\ 
   %     \bottomrule
   %   \end{tabular}
-  %   \caption{Covariate balance check for one-to-one propensity score matching with a caliber (Problem 2(c)), year 2014} 
+  %   \caption{Covariate balance check for one-to-one propensity score
+  %   matching with a caliper (Exercise 2(c)), year 2014}
   %   \label{tab-bal2c-14}
   % \end{table}
 
@@ -240,7 +248,9 @@
   \item 2002: -0.6381 (SE = 0.1285)
   \item 2014: -0.7314 (SE = 0.0890)
   \end{itemize}
-  
+  As before, there is a significant negative effect detected for both
+  years.  Now, however, the effect is slightly larger in magnitude for
+  year 2014 than for year 2002.
 
   Tables~\ref{tab-bal2d-02} and \ref{tab-bal2d-14} contain covariate
   balance diagnostics, with each column containing the p-values for
@@ -310,14 +320,17 @@
   \item 2002: -0.5951 (SE = 0.0404)
   \item 2014: -0.6447 (SE = 0.0404)
   \end{itemize}
-  Full results from the regression are presented presented in
-  Tables~\ref{tab:lm-2e-02} and \ref{tab:lm-2e-14} at the end of the
-  document.
+  There is a significant negative effect detected for both years, and
+  the effect is slightly larger in magnitude for year 2014 than for
+  year 2002.  Full results from the regression are presented presented
+  in Tables~\ref{tab:lm-2e-02} and \ref{tab:lm-2e-14} at the end of
+  the document.
   
   Figure~\ref{fig:weights} shows a visualization of the weights
   arranged by their magnitude and colored by treatment assignment.  We
   notice that there are several observations with weights which are
-  strikingly large, and therefore these weights 
+  strikingly large, and therefore these weights may dominate the
+  eventual estimated causal effects. 
 
   
 
@@ -325,7 +338,7 @@
     \centering
     \includegraphics[width=\textwidth]{figures/weights-all.pdf}
     \caption{\label{fig:weights} Unstabilized and stabilized inverse
-      probability weights for Problems (2e) and (2f). }
+      probability weights for Exercises (2e) and (2f). }
   \end{figure}
 
 
@@ -351,8 +364,14 @@
   \item 2002: -0.5349 (SE = 0.0572)
   \item 2014: -0.6432 (SE = 0.0407)
   \end{itemize}
-  Full regression results are given in Tables~\ref{tab:lm-2f-02} and
-  \ref{tab:lm-2f-14} at the end of the document.
+  There is a significant negative effect detected for both years, and
+  the effect is slightly larger in magnitude for year 2014 than for
+  year 2002.  However, even though the weights themselves have lower
+  variance, the standard errors for the estimated causal effects are
+  slightly larger than they were for the analysis using unstabilized
+  weights.  Full regression results are given in
+  Tables~\ref{tab:lm-2f-02} and \ref{tab:lm-2f-14} at the end of the
+  document.
 
 \end{enumerate}
 

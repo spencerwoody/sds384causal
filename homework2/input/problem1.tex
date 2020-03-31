@@ -69,7 +69,11 @@ effect estimates from both years are:
 \item 2014: -0.7069 (SE = $0.0450$, $p < 0.0001$)
 \end{itemize}
 Here are throughout, we use the ordinary least squares estimate of the
-standard error, which is the outcome of the \texttt{lm} command in R.
+standard error, which is the outcome of the \texttt{lm} command in R.  
+
+We see that the causal effect of SnCR installations on annual NO$_x$
+emissions is significant and negative for both years, with the effect
+larger in magnitude for year 2002 than for year 2014. 
 
 Tables \ref{tab-bal1-02} and \ref{tab-bal1-14} present summaries of
 covariate balance between the treatment and control groups, using
@@ -79,8 +83,10 @@ chi-squared test depending on the data type.  There is significant
 imbalance present in the dataset from both years.  A large portion of
 the tests return very small p-values, a manifestation of significant
 differences in the distribution of covariates between treated and
-control units. This problem is especially bad for year 2014. 
-
+control units. This problem is especially bad for year 2014.
+Therefore, we should be cautious to characterize these figures as
+consistent estimates of the causal effect of interest since there
+could be confounding which has not been accounted for.
 
 
 \begin{table}[ht]
