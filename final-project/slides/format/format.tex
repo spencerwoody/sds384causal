@@ -1,0 +1,216 @@
+
+
+
+% Specify sans body text, math serif text
+\documentclass[sans, mathserif, professionalfont, 11pt]{beamer}
+
+% \documentclass[sans]{beamer}
+
+% \documentclass{beamer}
+
+% Specify fonts
+% \usepackage[default]{roboto}
+% \usepackage[scaled]{helvet} % Sans sefif body text
+\usepackage{txfonts}
+\usepackage[scaled]{helvet} % Sans sefif body text
+% \usepackage[]{comicneue} % Sans sefif body text
+% \usepackage{cmbright}
+% \usepackage[default]{comicneue}
+% \usepackage{mathpazo} % Palatino for math
+% \usepackage{eulervm}
+\usepackage[scaled=0.95]{inconsolata} % Inconsolata fixed width font
+% \usepackage[]{inconsolata} % Inconsolata fixed width font
+
+% \usepackage[]{txfonts}
+
+\usepackage{tikz}
+\usepackage{ragged2e}
+\usepackage{lipsum}
+\usepackage{hyperref}
+
+\justifying
+
+% Bibliography
+\usepackage[round]{natbib}
+% \bibliographystyle{apacite}
+\usepackage{appendixnumberbeamer}
+\bibliographystyle{plainnat}
+% \AtBeginDocument{\renewcommand{\harvardand}{\&}}
+
+\newcommand\ind{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+
+\newcommand{\U}{\mathbf{U}}
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\m}{\mathbf{m}}
+\newcommand{\w}{\mathbf{w}}
+
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\dee}{\mathrm{d}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\trans}{\intercal}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\f}{\mathbf{f}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\gammatilde}{\tilde{\gamma}}
+\newcommand{\betabar}{\bar{\beta}}
+\newcommand{\Ytilde}{\tilde{Y}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\E}{\mathrm{E}}
+
+
+% Use mathbb symbols from Computer Modern
+% \AtBeginDocument{
+%   \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+%   \DeclareSymbolFontAlphabet{\mathbb}{AMSb}}
+
+\DeclareMathOperator{\EE}{E}
+
+% Graphics, tables, math, etc.
+\usepackage{graphicx} 
+\usepackage{booktabs} 
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+% \usepackage[symbol]{footmisc}
+
+% \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+% Formatting
+\setbeamertemplate{caption}[numbered]
+
+\setbeamertemplate{title page}
+{
+  \begin{minipage}[b][\paperheight]{\textwidth}
+    \vfill
+    \ifx\inserttitle\@empty%
+    \else%
+    {\raggedright\linespread{0.8}\usebeamerfont{title}\usebeamercolor[fg]{title}
+      % \scshape\MakeLowercase{\inserttitle}\par}%
+      \scshape
+      {\inserttitle}\par}%
+    \vspace*{0.5em}
+    \fi%
+    \ifx\insertsubtitle\@empty%
+    \else%
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+    \vspace*{0.5em}
+    \hrule
+    \fi%
+    \vspace*{0.5em}
+    \ifx\insertauthor\@empty%
+    \else%
+    {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}%
+    \vspace*{0.25em}
+    \fi%
+    % Institute
+    \ifx\insertinstitut\@empty%
+    \else%
+    \vspace*{3mm}
+    {\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}%
+    \fi%
+        \vspace*{3mm}
+        % Date
+    \ifx\insertdate\@empty%
+    \else%
+    {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}%
+    \fi%
+    \vspace*{5mm}
+    % \vfill
+    % -------------------------------------------------------------------------
+    % -------------------------------------------------------------------------
+    % -------------------------------------------------------------------------
+    % -------------------------------------------------------------------------
+    % University logo; if none, comment out
+    \if1\graphic{
+      % \begin{center}
+      \includegraphics[width=0.5\textwidth]{img/department-logo.png}\\
+      % \includegraphics[width=0.6\textwidth]{img/McCombs_School_Brand_Branded.png}
+      % \includegraphics[width=0.6\textwidth]{img/irom-logo.png}
+      % \end{center}
+    }\fi
+    % -------------------------------------------------------------------------
+    % -------------------------------------------------------------------------
+    % -------------------------------------------------------------------------
+    % -------------------------------------------------------------------------
+  \vfill
+  \vspace*{5mm}
+  \end{minipage}
+}
+
+% \AtBeginSection{\frame{\sectionpage}}
+
+\setbeamertemplate{frametitle}
+  {\begin{flushleft}\smallskip 
+    \insertframetitle\par 
+   \vskip1pt\end{flushleft}}
+\setbeamertemplate{itemize item}{$\bullet$}
+\setbeamertemplate{navigation symbols}{}
+% \setbeamertemplate{footline}[text line]{%
+%     \hfill
+% }
+ \setbeamertemplate {footline}{\quad\hfill\insertframenumber\strut\quad}
+\setbeamertemplate{footline}{
+  \hfill%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  % Use this line for only the current frame number
+  \setbeamertemplate{page number in head/foot}[framenumber]%
+  % Use this line for frame number and *total* frame number
+    % \setbeamertemplate{page number in head/foot}[totalframenumber]%
+  \usebeamertemplate*{page number in head/foot}\kern1.5em\vskip8pt
+}
+
+
+% You can customize color settings here
+
+% % Define some colors:
+
+% Colors from R; see following page
+% http://research.stowers.org/mcm/efg/R/Color/Chart/ColorChart.pdf
+\input{format/r-colors}
+
+% \definecolor{DarkFern}{HTML}{407428}
+% \definecolor{DarkCharcoal}{HTML}{4D4944}
+% \colorlet{Fern}{DarkFern!85!white}
+% \colorlet{Charcoal}{DarkCharcoal!85!white}
+% \colorlet{LightCharcoal}{Charcoal!50!white}
+% \colorlet{AlertColor}{orange!80!black}
+% \colorlet{DarkRed}{red!70!black}
+% \colorlet{DarkBlue}{blue!70!black}
+% \colorlet{DarkGreen}{green!70!black}
+
+% Official UT colors. See style guide:
+% https://brand.utexas.edu/identity/color/
+\definecolor{burntorange}{HTML}{BF5700}
+\definecolor{mygrey}{HTML}{333f48}
+
+% % Use the colors:
+\setbeamercolor{title}{fg=burntorange}
+\setbeamercolor{structure}{fg=burntorange, bg = grey90}
+\setbeamercolor{titlelike}{parent=structure}
+\setbeamercolor{frametitle}{fg=burntorange}
+\setbeamercolor{normal text}{fg=mygrey}
+\setbeamercolor{block title}{fg=white,bg=burntorange}
+\setbeamercolor{block body}{fg=mygrey,bg=grey90}
+
+\setbeamercolor{block title example}{fg=white,bg=dodgerblue3}
+\setbeamercolor{block body example}{fg=mygrey,bg=grey90}
+
+\setbeamercolor{block title alerted}{fg=white,bg=firebrick3}
+\setbeamercolor{block body alerted}{fg=mygrey,bg=grey90}
+
+
+% \setbeamercolor{alerted text}{fg=AlertColor}
+% \setbeamercolor{itemize item}{fg=burntorange}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:

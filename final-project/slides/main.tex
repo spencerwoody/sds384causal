@@ -1,0 +1,148 @@
+
+
+% Formatting the presentation
+% Change this file to change or remove the logo
+
+\input{format/format}
+
+\newcommand{\backupbegin}{
+   \newcounter{finalframe}
+   \setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \setcounter{framenumber}{\value{finalframe}}
+}
+
+% Use this line to produce Section title pages
+
+
+% -------------------------------------------------------------------------
+% Title and (optional) subtitle
+
+% Title slide
+\title[Nonbinary treatments]{Matching methods for categorical and
+  continuous treatments} % \subtitle{Modernizing an antiquated style}
+
+
+\newcommand{\graphic}{1}
+
+% -------------------------------------------------------------------------
+% Author(s)
+
+% Single author
+\author{Spencer Woody}
+\institute{SDS 384: Causal Inference Methodology}
+
+
+% Several authors, with different institution
+% \author{\textbf{Spencer Woody}\inst{1} \and Carlos Carvalho\inst{2} \and Jared Murray\inst{2}}
+
+% \institute{\inst{1}Department of Statistics and Data Sciences \and
+%   \inst{2}Department of Information, Risk, and Operations Management \\
+
+%  The University of Texas at Austin}
+
+% Several authors, same institution   
+% \author{Author One \;$\cdot$\; Author Two}
+
+% \institute{University of Texas at Austin}
+
+% -------------------------------------------------------------------------
+% Date
+\date{April 30, 2020} 
+
+% -------------------------------------------------------------------------
+% Begin document
+
+
+
+% \renewcommand*\finalnamedelim{\addspace\&\space}
+
+
+\begin{document}
+
+
+
+% -------------------------------------------------------------------------
+% Macros
+
+\newcommand{\CATE}[0]{\text{CATE}}
+\newcommand{\cov}[0]{\text{cov}}
+
+
+% -------------------------------------------------------------------------
+% Content
+
+% \setbeamertemplate{blocks}[rounded][shadow=false]
+
+% Title slide
+\input{format/title}
+
+% Main body
+\section{Introduction}
+\input{input/intro}
+
+% \AtBeginSection{\frame{\sectionpage}}
+
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=false,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+\input{input/nattino}
+\input{input/saevje}
+\input{input/wu}
+\AtBeginSection[]{
+}
+
+\input{input/conclusion}
+
+% Now 
+
+
+% Sections
+% \input{input/formatting}
+
+% -------------------------------------------------------------------------
+
+% Bibliography
+\begin{frame}[t,allowframebreaks]
+\frametitle{References}
+
+
+\begingroup
+\renewcommand{\section}[2]{}
+\tiny
+\bibliography{main}
+\endgroup
+\normalsize
+
+\end{frame}
+
+\appendix
+\backupbegin
+
+% -------------------------------------------------------------------------
+% Extra slides
+
+% \frame{Extra slides...}
+
+% And your backup slides here
+% \frame{\lipsum[3]}
+\backupend
+
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,191 @@
+
+
+
+% -------------------------------------------------------------------------
+
+\begin{frame}
+  \frametitle{Introduction}
+
+
+
+  Let $\mathcal{Z}$ be the sample space for the treatment assigment
+  $Z$.
+
+  \bigskip 
+
+  \begin{itemize}
+  \item Most of our course has only considered binary treatments.  
+    \begin{align*}
+      Z \in \mathcal{Z} = \{0, 1 \}
+    \end{align*}
+    Causal estimands are comparisons of counterfactual outcomes
+    $Y_i(Z_i = 1)$ vs $Y_i(Z_i = 0)$ \medskip
+  \item Now we consider nonbinary treatments \medskip 
+    \begin{itemize}
+    \item \textbf{Categorical} (possibly ordinal):
+      $\mathcal{Z} = \{1, 2, \ldots, k \}$,\\  e.g.~multiple treatment
+      arms \medskip 
+    \item \textbf{Continuous}: $\mathcal{Z} \subseteq \mathbb{R}$,
+      e.g.~drug dose \medskip 
+    \end{itemize}
+
+  \end{itemize}
+
+
+  % \textcolor{grey}{Not considering time-varying treatments here\ldots}
+
+
+\end{frame}
+
+% -------------------------------------------------------------------------
+
+\begin{frame}
+  \frametitle{Causal estimands in the Rubin Causal Model}
+
+  \textbf{Categorical treatment} with $k$ categories: \medskip
+
+  \begin{itemize}
+  \item There are $\binom{k}{2}$ pairwise comparisons of treatment assignment
+    \begin{align*}
+      Y_i(Z_i = j) \text{ vs. } Y_i(Z_i = {j'}) \text{ for } j,j'\in \{1,2,\ldots,k\}
+    \end{align*}
+  \end{itemize}
+  
+  \textbf{Continuous treatment}: \medskip 
+  \begin{itemize}
+  \item Finite difference comparison
+    \begin{align*} 
+      Y_i(Z_i = z) \text{ vs. } Y_i(Z_i = z') \text{ for } z \neq z'
+    \end{align*}
+  \item \textit{Average dose-response function}
+    \begin{align*}
+      \mu(z) = \E[Y_i(z)]
+    \end{align*}
+  \end{itemize}
+  
+\end{frame}
+
+% -------------------------------------------------------------------------
+
+\begin{frame}
+  \frametitle{Generalized propensity score}
+  
+  Let $X$ be the vector of observed covariates. \bigskip 
+
+
+
+
+
+
+  \begin{block}{\textit{Definition}: Generalized propensity score\footnote{\cite{Imbens2000,Hirano2004}} (GPS)}
+    Let $r(z,x)$ be the conditional density (or mass function) of the
+    treatment given the covariates:
+    \begin{align*}
+      r(z, x) = f_{Z \mid X}(z \mid x)
+    \end{align*}
+    The generalized propensity score is $R = r(Z, X)$. 
+  \end{block}
+
+  \bigskip
+
+  Note that $R$ may be a vector, e.g. if $Z$ is categorical. 
+
+\end{frame}
+
+% -------------------------------------------------------------------------
+
+\begin{frame}
+  \frametitle{Overlap}
+  
+  \begin{block}{\textit{Assumption}: Overlap}
+    $$r(z, x) = f_{Z \mid X}(z \mid x) > 0 \quad \forall z \in \mathcal{Z}$$
+  \end{block}
+  
+\end{frame}
+
+% -------------------------------------------------------------------------
+
+\begin{frame}
+  \frametitle{Generalized propensity score}
+
+    \begin{block}{\textit{Assumption}: Weak unconfoundedness}
+    $Y(z) \ind Z \mid X$ for all $z \in \mathcal{Z}$ \smallskip
+
+    \footnotesize \emph{Note: this does not require joint independence of all
+    potential outcomes $\{Y(z)\}_{z\in \mathcal{Z}}$} \normalsize
+  \end{block}
+
+  Similar to Rosenbaum and Rubin (1983) for the case of binary $Z$,
+  \cite{Imbens2000} and \cite{Hirano2004} demonstrate:
+
+  \begin{block}{\textit{Theorem}: Weak unconfoundedness given the GPS}
+    If weak unconfoundedness holds given $X$, then, for every $z$,
+    \begin{align*}
+      f_{Z}(z \mid r(z, X), Y(z)) = f_{Z}(z \mid r(z, X)).
+    \end{align*}
+
+  \end{block}
+  
+  
+\end{frame}
+
+% -------------------------------------------------------------------------
+\begin{frame}
+  \frametitle{Existing methods mostly rely on GPS}
+  
+  \begin{itemize}
+  \item \cite{imai2004}: Subclassify on GPS, then take average over
+    subclasses \medskip 
+  \item Hirano and Imbens (2004): Parametric model for $Y \mid Z, R$,
+    then marginalize over $R$ \medskip 
+  \item \cite{robins2000marginal}: IPTW estimator using GPS
+    \medskip
+  \end{itemize}
+
+  \textbf{Disadvantage}: These methods rely on parametric assumptions
+  \bigskip
+
+  \emph{Work on matching for nonbinary treatments is relatively new}
+
+\end{frame}
+
+% -------------------------------------------------------------------------
+
+\begin{frame}
+  \frametitle{Outline}
+
+  Presenting methodologies from three papers: \bigskip 
+
+  \begin{enumerate}[(i)]
+  \item \cite{nattino2019}: Compare treatment effects across 3
+    treatment arms (\textit{categorical}) \medskip
+  \item \cite{svje2017}: Generalized full matching for multiple
+    treatment categories (\textit{categorical}) \medskip
+  \item \cite{wu2020matching}: Use matching to estimate average
+    dose-response (\textit{continuous})
+  \end{enumerate}
+  
+\end{frame}
+
+
+% -------------------------------------------------------------------------
+
+% \begin{frame}
+%   \frametitle{Other methods for continuous treatments}
+  
+%   \begin{itemize}
+%   \item \cite{RIClinear,bac}: Bayesian linear regression  \medskip 
+%   \item Woody et al. (2020+): Nonparametric regression, assuming
+%     (heterogeneous) linear treatment effects \medskip
+%   \item \cite{kennedy2017}: non parametric double-robust estimation of
+%     average dose-response
+%   \end{itemize}
+  
+% \end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:
+
+
